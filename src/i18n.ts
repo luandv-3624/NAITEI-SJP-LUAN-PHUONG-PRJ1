@@ -1,0 +1,40 @@
+import i18n, { type LanguageDetectorModule } from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { store } from './atoms';
+import { localeAtom } from './features/locale';
+import THEME_EN from './locales/en/theme.json';
+import THEME_VI from './locales/vi/theme.json';
+import COMMON_EN from './locales/en/common.json';
+import COMMON_VI from './locales/vi/common.json';
+
+const resources = {
+  en: {
+    theme: THEME_EN,
+    common: COMMON_EN,
+  },
+  vi: {
+    theme: THEME_VI,
+    common: COMMON_VI,
+  },
+};
+
+const languageDetector: LanguageDetectorModule = {
+  type: 'languageDetector',
+  detect: () => {
+    const lang = store.get(localeAtom);
+    return lang;
+  },
+};
+
+i18n
+  .use(initReactI18next)
+  .use(languageDetector)
+  .init({
+    resources,
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+
+export default i18n;
