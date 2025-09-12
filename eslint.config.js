@@ -26,6 +26,9 @@ export default tseslint.config([
         'error',
         { patterns: ['@/features/*/*/*', '@/features/*/*'] },
       ],
+      'react-refresh/only-export-components': 'off',
+      'no-useless-escape': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
 ]);

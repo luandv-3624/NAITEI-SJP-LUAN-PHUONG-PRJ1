@@ -6,15 +6,19 @@ import THEME_EN from './locales/en/theme.json';
 import THEME_VI from './locales/vi/theme.json';
 import COMMON_EN from './locales/en/common.json';
 import COMMON_VI from './locales/vi/common.json';
+import AUTH_EN from './locales/en/auth.json';
+import AUTH_VI from './locales/vi/auth.json';
 
 const resources = {
   en: {
     theme: THEME_EN,
     common: COMMON_EN,
+    auth: AUTH_EN,
   },
   vi: {
     theme: THEME_VI,
     common: COMMON_VI,
+    auth: AUTH_VI,
   },
 };
 

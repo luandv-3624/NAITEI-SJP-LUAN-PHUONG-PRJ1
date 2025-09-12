@@ -1,17 +1,32 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { Home } from './pages';
-import { MainLayout } from './layouts';
+import { Home, SignIn, SignUp, SignUpSuccess } from './pages';
+import { AuthLayout, MainLayout, SignInOutLayout } from './layouts';
 import { useThemeEffect } from './features/theme';
 import './i18n';
+import { useGetProfile, useSilentRefresh } from './features/auth';
 
 function App() {
   useThemeEffect();
+
+  const { isLoading } = useSilentRefresh();
+  const { isEnabled, isLoading: isProfileLoading } = useGetProfile();
+
+  if (isLoading || (isEnabled && isProfileLoading)) {
+    return null;
+  }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />} />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route element={<SignInOutLayout />}>
+            <Route path='/sign-in' element={<SignIn />} />
+            <Route path='/sign-up' element={<SignUp />} />
+          </Route>
+          <Route path='/sign-up-success' element={<SignUpSuccess />} />
         </Route>
       </Routes>
     </BrowserRouter>
