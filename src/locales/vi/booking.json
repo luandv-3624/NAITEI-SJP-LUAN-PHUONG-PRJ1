@@ -95,7 +95,13 @@
     "btn_pay": "Thanh toán",
     "btn_processing": "Đang xử lý...",
     "error_invalid_amount": "Số tiền không hợp lệ!",
-    "error_generate_qr": "Lỗi khi tạo QR!"
+    "error_generate_qr": "Lỗi khi tạo QR!",
+    "invalid_amount": "Số tiền thanh toán không hợp lệ",
+    "success": "Thanh toán thành công",
+    "failed_or_canceled": "Thanh toán thất bại hoặc bị hủy",
+    "required_amount": "Vui lòng nhập số tiền",
+    "create_payment_success": "Tạo thanh toán thành công",
+    "create_payment_failed": "Tạo thanh toán thất bại"
   },
   "not_found": "Không tìm thấy đặt chỗ",
   "error": {
