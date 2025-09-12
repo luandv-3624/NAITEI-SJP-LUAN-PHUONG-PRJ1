@@ -12,6 +12,8 @@ import VENUE_EN from './locales/en/venue.json';
 import VENUE_VI from './locales/vi/venue.json';
 import SPACE_EN from './locales/en/space.json';
 import SPACE_VI from './locales/vi/space.json';
+import BOOKING_EN from './locales/en/booking.json';
+import BOOKING_VI from './locales/vi/booking.json';
 
 const resources = {
   en: {
@@ -20,6 +22,7 @@ const resources = {
     auth: AUTH_EN,
     venue: VENUE_EN,
     space: SPACE_EN,
+    booking: BOOKING_EN,
   },
   vi: {
     theme: THEME_VI,
@@ -27,6 +30,7 @@ const resources = {
     auth: AUTH_VI,
     venue: VENUE_VI,
     space: SPACE_VI,
+    booking: BOOKING_VI,
   },
 };
 

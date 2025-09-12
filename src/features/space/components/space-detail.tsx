@@ -25,9 +25,33 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Space } from '@/types';
+import { Space, Review } from '@/types';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { CreateBookingForm } from '@/features/booking';
+import { SPACE_STATUS, SpaceStatus } from '@/constants';
+import { SpaceDetailOverview } from './space-detail-overview';
+import {
+  StarRating,
+  InfoCard,
+  ContactItem,
+  AmenityItem,
+} from '@/features/space';
+
+const mockReviews: Review[] = [
+  {
+    id: 1,
+    rating: 4,
+    comment: 'Phòng họp rộng rãi, nhân viên thân thiện.',
+    username: 'Nguyen Van A',
+  },
+  {
+    id: 2,
+    rating: 5,
+    comment: 'Không gian yên tĩnh, rất thích hợp cho làm việc nhóm.',
+    username: 'Nguyen Van B',
+  },
+];
 
 export function SpaceDetail({ space }: { space: Space }) {
   const { t } = useTranslation('space');
@@ -76,19 +100,19 @@ export function SpaceDetail({ space }: { space: Space }) {
     return () => observer.disconnect();
   }, [activeTab]);
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: SpaceStatus) => {
     switch (status) {
-      case 'available':
+      case SPACE_STATUS.AVAILABLE:
         return (
           <Badge className='bg-green-100 text-green-800 border-green-200'>
             <CheckCircle className='w-3 h-3 mr-1' />
             {t('status.available')}
           </Badge>
         );
-      case 'occupied':
+      case SPACE_STATUS.UNAVAILABLE:
         return (
           <Badge className='bg-red-100 text-red-800 border-red-200'>
-            {t('status.occupied')}
+            {t('status.unavailable')}
           </Badge>
         );
       default:
@@ -222,70 +246,7 @@ export function SpaceDetail({ space }: { space: Space }) {
             </Tabs>
           </div>
 
-          <Card id='overview-section' className='mb-8 border-0 shadow-sm'>
-            <div className='p-6'>
-              <h2 className='text-2xl font-bold mb-4 text-gray-900'>
-                Về {space.name}
-              </h2>
-              <p className='text-gray-700 leading-relaxed mb-6'>
-                {space.description}
-              </p>
-
-              <div className='mb-6'>
-                <h3 className='text-lg font-semibold mb-4'>
-                  {t('overview.details')}
-                </h3>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                  <div className='flex justify-between py-2 border-b border-gray-100'>
-                    <span className='text-gray-600'>{t('overview.type')}</span>
-                    <span className='font-medium'>{space.space_type.name}</span>
-                  </div>
-                  <div className='flex justify-between py-2 border-b border-gray-100'>
-                    <span className='text-gray-600'>
-                      {t('overview.capacity')}
-                    </span>
-                    <span className='font-medium'>{space.capacity} người</span>
-                  </div>
-                  <div className='flex justify-between py-2 border-b border-gray-100'>
-                    <span className='text-gray-600'>{t('overview.price')}</span>
-                    <span className='font-medium'>
-                      {parseInt(space.price).toLocaleString()}₫/
-                      {space.price_type.name}
-                    </span>
-                  </div>
-                  <div className='flex justify-between py-2 border-b border-gray-100'>
-                    <span className='text-gray-600'>
-                      {t('overview.status')}
-                    </span>
-                    <span className='font-medium text-green-600'>
-                      {t('status.available')}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className='grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-blue-50 rounded-lg'>
-                <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>4.8</div>
-                  <div className='text-sm text-gray-600'>
-                    {t('reviews.title')}
-                  </div>
-                </div>
-                <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>156</div>
-                  <div className='text-sm text-gray-600'>
-                    {t('reviews.see_all')}
-                  </div>
-                </div>
-                <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>24/7</div>
-                  <div className='text-sm text-gray-600'>
-                    {t('contact.title')}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
+          <SpaceDetailOverview space={space} />
 
           <Card id='amenities-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6'>
@@ -293,15 +254,13 @@ export function SpaceDetail({ space }: { space: Space }) {
                 {t('amenities.title')}
               </h2>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {space?.amenities && space?.amenities.length > 0 ? (
-                  space?.amenities.map((amenity, idx) => (
-                    <div
+                {space?.amenities?.length ? (
+                  space.amenities.map((amenity, idx) => (
+                    <AmenityItem
                       key={idx}
-                      className='flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors'
-                    >
-                      {getAmenityIcon(amenity.code)}
-                      <span className='font-medium'>{amenity.name}</span>
-                    </div>
+                      icon={getAmenityIcon(amenity.code)}
+                      name={amenity.name}
+                    />
                   ))
                 ) : (
                   <div className='col-span-full text-gray-500 text-center py-4'>
@@ -331,163 +290,60 @@ export function SpaceDetail({ space }: { space: Space }) {
                 </ul>
               </div>
 
-              <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-                <div className='grid grid-cols-1'>
-                  <div className=''>
-                    <label className='block text-lg font-semibold mb-4'>
-                      {t('booking.start_time')}
-                    </label>
-                    <input
-                      type='datetime-local'
-                      className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                      min={new Date().toISOString().slice(0, 16)}
-                    />
-                  </div>
-
-                  <div className='pt-4'>
-                    <label className='block text-lg font-semibold mb-2'>
-                      {t('booking.end_time')}
-                    </label>
-                    <input
-                      type='datetime-local'
-                      className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-                      min={new Date().toISOString().slice(0, 16)}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className='text-lg font-semibold mb-4'>
-                    {t('booking.summary')}
-                  </h3>
-                  <div className='bg-gray-50 rounded-lg p-4 space-y-3'>
-                    <div className='flex justify-between'>
-                      <span>{t('booking.space')}:</span>
-                      <span className='font-medium'>{space.name}</span>
-                    </div>
-                    <div className='flex justify-between'>
-                      <span>{t('booking.capacity')}:</span>
-                      <span className='font-medium'>
-                        {space.capacity} người
-                      </span>
-                    </div>
-                    <div className='flex justify-between'>
-                      <span>{t('booking.price')}:</span>
-                      <span className='font-medium'>
-                        {parseInt(space.price).toLocaleString()}₫/
-                        {space.price_type.name}
-                      </span>
-                    </div>
-                    <hr className='border-gray-200' />
-                    <div className='flex justify-between text-lg font-semibold'>
-                      <span>{t('booking.total')}:</span>
-                      <span className='text-blue-600'>
-                        {parseInt(space.price).toLocaleString()}₫
-                      </span>
-                    </div>
-                    <Button className='w-full bg-blue-600 hover:bg-blue-700'>
-                      {t('booking.confirm')}
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <CreateBookingForm space={space} />
             </div>
           </Card>
         </div>
 
         <div className='lg:col-span-1'>
           <div className='sticky top-32 space-y-6'>
-            <Card className='border-0 shadow-sm'>
-              <div className='p-6'>
-                <h3 className='text-lg font-semibold mb-3'>
-                  {space.venue.name}
-                </h3>
-                <div className='flex items-start gap-2 mb-4'>
-                  <MapPin className='w-4 h-4 text-gray-500 mt-0.5' />
-                  <span className='text-sm text-gray-600'>
-                    {space.venue.address}
-                  </span>
-                </div>
+            <InfoCard
+              title={space.venue.name}
+              footer={
                 <Button asChild variant='outline' className='w-full'>
                   <Link to={'/venues/' + space.venue.id}>
                     {t('venue.related_rooms')}
                   </Link>
                 </Button>
+              }
+            >
+              <div className='flex items-start gap-2 mb-4'>
+                <MapPin className='w-4 h-4 text-gray-500 mt-0.5' />
+                <span className='text-sm text-gray-600'>
+                  {space.venue.address}
+                </span>
               </div>
-            </Card>
+            </InfoCard>
 
-            <Card className='border-0 shadow-sm'>
-              <div className='p-6'>
-                <h3 className='text-lg font-semibold mb-4'>
-                  {t('contact.title')}
-                </h3>
-                <div className='space-y-3'>
-                  <div className='flex items-center gap-3 text-gray-600'>
-                    <Phone className='w-4 h-4' />
-                    <span className='text-sm'>1900-xxxx</span>
-                  </div>
-                  <div className='flex items-center gap-3 text-gray-600'>
-                    <Mail className='w-4 h-4' />
-                    <span className='text-sm'>{t('contact.email')}</span>
-                  </div>
-                  <div className='flex items-center gap-3 text-gray-600'>
-                    <Clock className='w-4 h-4' />
-                    <span className='text-sm'>
-                      {t('contact.response_time')}
-                    </span>
-                  </div>
-                </div>
-                <Button variant='outline' className='w-full mt-4'>
+            <InfoCard
+              title={t('contact.title')}
+              footer={
+                <Button variant='outline' className='w-full'>
                   {t('contact.send_message')}
                 </Button>
+              }
+            >
+              <div className='space-y-3'>
+                <ContactItem icon={Phone} text='1900-xxxx' />
+                <ContactItem icon={Mail} text={t('contact.email')} />
+                <ContactItem icon={Clock} text={t('contact.response_time')} />
               </div>
-            </Card>
+            </InfoCard>
 
-            <Card className='border-0 shadow-sm'>
-              <div className='p-6'>
-                <h3 className='text-lg font-semibold mb-4'>
-                  {t('reviews.title')}
-                </h3>
-                <div className='space-y-4'>
-                  <div className='border-b border-gray-100 pb-3'>
-                    <div className='flex items-center gap-2 mb-2'>
-                      <div className='flex'>
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
-                            key={star}
-                            className='w-4 h-4 fill-yellow-400 text-yellow-400'
-                          />
-                        ))}
-                      </div>
-                      <span className='text-sm text-gray-600'>Nguyễn A.</span>
-                    </div>
-                    <p className='text-sm text-gray-700'>
-                      "Phòng họp rất thoải mái và hiện đại..."
-                    </p>
-                  </div>
-                  <div>
-                    <div className='flex items-center gap-2 mb-2'>
-                      <div className='flex'>
-                        {[1, 2, 3, 4].map((star) => (
-                          <Star
-                            key={star}
-                            className='w-4 h-4 fill-yellow-400 text-yellow-400'
-                          />
-                        ))}
-                        <Star className='w-4 h-4 text-gray-300' />
-                      </div>
-                      <span className='text-sm text-gray-600'>Trần B.</span>
-                    </div>
-                    <p className='text-sm text-gray-700'>
-                      "Vị trí thuận tiện, dịch vụ tốt..."
-                    </p>
-                  </div>
-                </div>
-                <Button variant='outline' className='w-full mt-4'>
+            <InfoCard
+              title={t('reviews.title')}
+              footer={
+                <Button variant='outline' className='w-full'>
                   {t('reviews.see_all')}
                 </Button>
+              }
+            >
+              <div className='space-y-4'>
+                {mockReviews.map((review) => (
+                  <StarRating key={review.id} review={review} />
+                ))}
               </div>
-            </Card>
+            </InfoCard>
           </div>
         </div>
       </div>

@@ -7,3 +7,6 @@ export { type Ward } from './ward';
 export { type Amenity } from './amenity';
 export { type Venue } from './venue';
 export { type AxiosError } from './axios-error';
+export { type Booking } from './booking';
+export { type Response } from './response';
+export { type Review } from './review';

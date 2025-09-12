@@ -1,4 +1,5 @@
 import { SpaceType, PriceType, Amenity, Venue } from '@/types';
+import { SpaceStatus } from '@/constants';
 
 export type Space = {
   id: number;
@@ -9,7 +10,7 @@ export type Space = {
   price_type_id: number;
   price: string;
   description: string;
-  status: string;
+  status: SpaceStatus;
   images: string[];
   space_type: SpaceType;
   price_type: PriceType;
