@@ -1,7 +1,7 @@
-import path from "path";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
+import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,16 +11,16 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src"),
+        '@': path.resolve(__dirname, './src'),
       },
     },
     server: {
       proxy: {
-        "/api": {
+        '/api': {
           target: env.VITE_PUBLIC_API_BASE_URL,
           changeOrigin: true,
         },
-        "/socket.io": {
+        '/socket.io': {
           target: env.VITE_PUBLIC_API_BASE_URL,
           ws: true,
           rewriteWsOrigin: true,

@@ -1,5 +1,19 @@
 {
   "en": "English",
   "vi": "Vietnamese",
-  "select_lang": "Select Language"
+  "select_lang": "Select Language",
+  "logo": "CoWorkSpace",
+  "menu": {
+    "home": "Home",
+    "venue": "Venue",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "profile": "Profile"
+  },
+  "footer": "© 2025 CoWorkSpace. All rights reserved."
 }

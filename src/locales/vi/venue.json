@@ -1,0 +1,49 @@
+{
+  "tabs": {
+    "overview": "Tổng quan",
+    "location": "Vị trí",
+    "spaces": "Không gian ({{count}})"
+  },
+  "overview": {
+    "title": "Về {{name}}",
+    "totalSpaces": "Không gian",
+    "totalCapacity": "Tổng sức chứa",
+    "support": "Hỗ trợ"
+  },
+  "location": {
+    "title": "Vị trí",
+    "map": {
+      "interactive": "Bản đồ tương tác",
+      "openGoogle": "Mở Google Maps"
+    }
+  },
+  "spaces": {
+    "title": "Không gian có sẵn",
+    "capacity": "{{count}} người",
+    "amenities": "Tiện nghi",
+    "button": {
+      "bookNow": "Đặt ngay"
+    }
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "phone": "Đang cập nhật",
+    "mail": "Đang cập nhật",
+    "responseTime": "Phản hồi trong 1h",
+    "sendMessage": "Gửi tin nhắn"
+  },
+  "quickStats": {
+    "title": "Thông tin nhanh",
+    "status": "Trạng thái",
+    "statusActive": "Hoạt động",
+    "area": "Khu vực",
+    "type": "Loại hình",
+    "typeOffice": "Văn phòng"
+  },
+  "status": {
+    "approved": "Đã duyệt",
+    "available": "Có sẵn"
+  },
+  "error": "Không thể tải chi tiết địa điểm.",
+  "notFound": "Không tìm thấy địa điểm."
+}

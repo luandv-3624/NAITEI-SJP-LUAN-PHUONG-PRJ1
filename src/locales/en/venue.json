@@ -1,0 +1,49 @@
+{
+  "tabs": {
+    "overview": "Overview",
+    "location": "Location",
+    "spaces": "Spaces ({{count}})"
+  },
+  "overview": {
+    "title": "About {{name}}",
+    "totalSpaces": "Spaces",
+    "totalCapacity": "Total Capacity",
+    "support": "Support"
+  },
+  "location": {
+    "title": "Location",
+    "map": {
+      "interactive": "Interactive Map",
+      "openGoogle": "Open Google Maps"
+    }
+  },
+  "spaces": {
+    "title": "Available Spaces",
+    "capacity": "{{count}} people",
+    "amenities": "Amenities",
+    "button": {
+      "bookNow": "Book Now"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "Updating",
+    "mail": "Updating",
+    "responseTime": "Responds within 1h",
+    "sendMessage": "Send Message"
+  },
+  "quickStats": {
+    "title": "Quick Info",
+    "status": "Status",
+    "statusActive": "Active",
+    "area": "Area",
+    "type": "Type",
+    "typeOffice": "Office"
+  },
+  "status": {
+    "approved": "Approved",
+    "available": "Available"
+  },
+  "error": "Error loading venue details.",
+  "notFound": "Venue not found."
+}

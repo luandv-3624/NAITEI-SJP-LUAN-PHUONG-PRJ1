@@ -1,5 +1,19 @@
 {
   "en": "Tiếng Anh",
   "vi": "Tiếng Việt",
-  "select_lang": "Chọn ngôn ngữ"
+  "select_lang": "Chọn ngôn ngữ",
+  "logo": "Không Gian Làm Việc",
+  "menu": {
+    "home": "Trang chủ",
+    "venue": "Địa điểm",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ"
+  },
+  "auth": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "profile": "Hồ sơ"
+  },
+  "footer": "© 2025 Không Gian Làm Việc. Giữ toàn bộ bản quyền."
 }

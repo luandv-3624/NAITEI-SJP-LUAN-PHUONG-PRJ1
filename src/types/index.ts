@@ -1,1 +1,8 @@
 export { type User } from './user';
+export { type Space } from './space';
+export { type SpaceType } from './space-type';
+export { type PriceType } from './price-type';
+export { type Province } from './province';
+export { type Ward } from './ward';
+export { type Amenity } from './amenity';
+export { type Venue } from './venue';

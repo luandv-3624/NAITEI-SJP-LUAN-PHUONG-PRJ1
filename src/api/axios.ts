@@ -74,9 +74,8 @@ axios.interceptors.response.use(
         const { access_token: newAccessToken } = data.data;
         tokenService.setAccessToken(newAccessToken);
 
-        axios.defaults.headers.common[
-          'Authorization'
-        ] = `Bearer ${newAccessToken}`;
+        axios.defaults.headers.common['Authorization'] =
+          `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
 
         processQueue(null, newAccessToken);
