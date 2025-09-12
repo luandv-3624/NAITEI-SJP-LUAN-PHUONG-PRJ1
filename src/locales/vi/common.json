@@ -15,5 +15,12 @@
     "logout": "Đăng xuất",
     "profile": "Hồ sơ"
   },
-  "footer": "© 2025 LP CoWorkSpace. Giữ toàn bộ bản quyền."
+  "header": {
+    "booking-history": "Lịch sử đặt phòng"
+  },
+  "footer": "© 2025 LP CoWorkSpace. Giữ toàn bộ bản quyền.",
+  "rows_per_page": "Số dòng mỗi trang",
+  "page_size": "Kích thước trang",
+  "previous": "Trang trước",
+  "next": "Trang sau"
 }

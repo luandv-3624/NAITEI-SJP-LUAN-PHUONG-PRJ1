@@ -3,5 +3,49 @@
   "booking_failed": "Booking failed",
   "required_start": "Please select a start time",
   "required_end": "Please select an end time",
-  "end_after_start": "End time must be after start time"
+  "end_after_start": "End time must be after start time",
+  "payment_status": {
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    "partial": "Partial"
+  },
+  "booking_status": {
+    "pending": "Pending",
+    "confirmed-unpaid": "Confirmed (Unpaid)",
+    "paid-pending": "Paid (Pending)",
+    "partial-pending": "Partial Pending",
+    "accepted": "Accepted",
+    "done": "Done",
+    "rejected": "Rejected",
+    "cancelled": "Cancelled"
+  },
+  "booking_history": {
+    "title": "Booking History",
+    "yourBookings": "Your Bookings ({{total}})",
+    "table": {
+      "id": "ID",
+      "space": "Space",
+      "duration": "Duration",
+      "status": "Status",
+      "payment": "Payment",
+      "total": "Total",
+      "actions": "Actions"
+    },
+    "loading": "Loading...",
+    "no_bookings": "No bookings",
+    "people": "{{count}} people",
+    "start": "Start",
+    "end": "End",
+    "view": "View"
+  },
+  "filter": {
+    "search": "Search",
+    "search_placeholder": "Search by space name...",
+    "status": "Status",
+    "all_status": "All Status",
+    "payment": "Payment",
+    "all_payments": "All Payments",
+    "start_date": "Start date",
+    "end_date": "End date"
+  }
 }

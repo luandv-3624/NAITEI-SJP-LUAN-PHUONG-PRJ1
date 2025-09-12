@@ -84,6 +84,9 @@ export function Header() {
               <DropdownMenuItem>
                 <NavLink to='/profile'>{t('auth.profile')}</NavLink>
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <NavLink to='/bookings'>{t('header.booking-history')}</NavLink>
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => {}}>
                 {t('auth.logout')}
               </DropdownMenuItem>
