@@ -1,0 +1,59 @@
+{
+  "tabs": {
+    "overview": "Tổng quan",
+    "amenities": "Tiện nghi",
+    "booking": "Đặt phòng"
+  },
+  "status": {
+    "available": "Có sẵn",
+    "occupied": "Đã đặt"
+  },
+  "booking": {
+    "reserve_now": "Đặt ngay",
+    "check_availability": "Xem lịch trống",
+    "important_notice": "Lưu ý quan trọng",
+    "note_1": "Vui lòng đặt phòng trước ít nhất 2 giờ",
+    "note_2": "Kiểm tra kỹ thông tin trước khi xác nhận",
+    "note_3": "Liên hệ hotline nếu cần hỗ trợ: 1900-xxxx",
+    "start_time": "Thời gian bắt đầu",
+    "end_time": "Thời gian kết thúc",
+    "summary": "Tóm tắt đặt phòng",
+    "total": "Tổng cộng",
+    "confirm": "Xác nhận đặt phòng",
+    "space": "Không gian",
+    "capacity": "Sức chứa",
+    "price": "Giá"
+  },
+  "overview": {
+    "about": "Về {{name}}",
+    "details": "Thông tin chi tiết",
+    "type": "Loại không gian",
+    "capacity": "Sức chứa",
+    "price": "Giá thuê",
+    "status": "Trạng thái",
+    "rating": "Đánh giá",
+    "bookings": "Lượt đặt",
+    "support": "Hỗ trợ"
+  },
+  "amenities": {
+    "title": "Tiện nghi & Dịch vụ"
+  },
+  "contact": {
+    "title": "Liên hệ hỗ trợ",
+    "response_time": "Phản hồi trong 1h",
+    "send_message": "Gửi tin nhắn"
+  },
+  "reviews": {
+    "title": "Đánh giá gần đây",
+    "see_all": "Xem tất cả đánh giá"
+  },
+  "venue": {
+    "related_rooms": "Xem các phòng liên quan"
+  },
+  "error": {
+    "fetch_failed": "Tải chi tiết không gian thất bại. Vui lòng thử lại sau."
+  },
+  "not_found": "Không tìm thấy không gian",
+  "no_images": "Không có hình ảnh nào",
+  "no_amenities": "Không có tiện nghi nào"
+}

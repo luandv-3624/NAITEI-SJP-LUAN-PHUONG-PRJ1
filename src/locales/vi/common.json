@@ -2,7 +2,7 @@
   "en": "Tiếng Anh",
   "vi": "Tiếng Việt",
   "select_lang": "Chọn ngôn ngữ",
-  "logo": "Không Gian Làm Việc",
+  "logo": "CoWorkSpace",
   "menu": {
     "home": "Trang chủ",
     "venue": "Địa điểm",
@@ -15,5 +15,5 @@
     "logout": "Đăng xuất",
     "profile": "Hồ sơ"
   },
-  "footer": "© 2025 Không Gian Làm Việc. Giữ toàn bộ bản quyền."
+  "footer": "© 2025 LP CoWorkSpace. Giữ toàn bộ bản quyền."
 }

@@ -1,0 +1,59 @@
+{
+  "tabs": {
+    "overview": "Overview",
+    "amenities": "Amenities",
+    "booking": "Booking"
+  },
+  "status": {
+    "available": "Available",
+    "occupied": "Occupied"
+  },
+  "booking": {
+    "reserve_now": "Reserve Now",
+    "check_availability": "Check Availability",
+    "important_notice": "Important Notice",
+    "note_1": "Please book at least 2 hours in advance",
+    "note_2": "Double-check information before confirming",
+    "note_3": "Contact hotline for support: 1900-xxxx",
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "summary": "Booking Summary",
+    "total": "Total",
+    "confirm": "Confirm Booking",
+    "space": "Space",
+    "capacity": "Capacity",
+    "price": "Price"
+  },
+  "overview": {
+    "about": "About {{name}}",
+    "details": "Details",
+    "type": "Space Type",
+    "capacity": "Capacity",
+    "price": "Price",
+    "status": "Status",
+    "rating": "Rating",
+    "bookings": "Bookings",
+    "support": "Support"
+  },
+  "amenities": {
+    "title": "Amenities & Services"
+  },
+  "contact": {
+    "title": "Contact Support",
+    "response_time": "Response within 1h",
+    "send_message": "Send Message"
+  },
+  "reviews": {
+    "title": "Recent Reviews",
+    "see_all": "See All Reviews"
+  },
+  "venue": {
+    "related_rooms": "View related spaces"
+  },
+  "error": {
+    "fetch_failed": "Failed to load space details. Please try again later."
+  },
+  "not_found": "Space not found",
+  "no_images": "No images available",
+  "no_amenities": "No amenities listed"
+}

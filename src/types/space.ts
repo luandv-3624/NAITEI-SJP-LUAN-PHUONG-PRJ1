@@ -1,8 +1,8 @@
-import { SpaceType, PriceType, Amenity } from '@/types';
+import { SpaceType, PriceType, Amenity, Venue } from '@/types';
 
 export type Space = {
   id: number;
-  venue_id: number;
+  venue: Venue;
   name: string;
   space_type_id: number;
   capacity: number;
@@ -10,7 +10,8 @@ export type Space = {
   price: string;
   description: string;
   status: string;
-  type: SpaceType;
+  images: string[];
+  space_type: SpaceType;
   price_type: PriceType;
-  amenities: Amenity[]; // có thể định nghĩa chi tiết hơn nếu có data
+  amenities: Amenity[];
 };

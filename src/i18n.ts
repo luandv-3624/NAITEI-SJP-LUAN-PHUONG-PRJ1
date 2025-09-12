@@ -10,6 +10,8 @@ import AUTH_EN from './locales/en/auth.json';
 import AUTH_VI from './locales/vi/auth.json';
 import VENUE_EN from './locales/en/venue.json';
 import VENUE_VI from './locales/vi/venue.json';
+import SPACE_EN from './locales/en/space.json';
+import SPACE_VI from './locales/vi/space.json';
 
 const resources = {
   en: {
@@ -17,12 +19,14 @@ const resources = {
     common: COMMON_EN,
     auth: AUTH_EN,
     venue: VENUE_EN,
+    space: SPACE_EN,
   },
   vi: {
     theme: THEME_VI,
     common: COMMON_VI,
     auth: AUTH_VI,
     venue: VENUE_VI,
+    space: SPACE_VI,
   },
 };
 

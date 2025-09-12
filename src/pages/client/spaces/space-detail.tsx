@@ -1,24 +1,22 @@
-import { VenueDetail, VenueDetailSkeleton } from '@/features/venue';
-import { useGetVenueDetail } from '@/features/venue';
-import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router';
+import { SpaceDetail, SpaceDetailSkeleton } from '@/features/space';
+import { useGetSpaceDetail } from '@/features/space';
 import { AlertCircle, MapPinOff } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { AxiosError } from '@/types';
 import { HTTP_STATUS_CODE } from '@/constants';
 
-export function VenueDetailPage() {
-  const { venueId } = useParams<{ venueId: string }>();
+export function SpaceDetailPage() {
+  const { t } = useTranslation('space');
+  const { spaceId } = useParams<{ spaceId: string }>();
   const {
-    data: venue,
+    data: space,
     isPending,
     isError,
     error,
-  } = useGetVenueDetail(venueId!);
-  const { t } = useTranslation('venue');
+  } = useGetSpaceDetail(spaceId!);
 
-  if (isPending) {
-    return <VenueDetailSkeleton />;
-  }
+  if (isPending) return <SpaceDetailSkeleton />;
 
   if (isError) {
     if (
@@ -28,7 +26,7 @@ export function VenueDetailPage() {
       return (
         <div className='flex flex-col items-center justify-center py-16 text-gray-500'>
           <MapPinOff className='w-10 h-10 mb-4' />
-          <p className='text-lg font-medium'>{t('notFound')}</p>
+          <p className='text-lg font-medium'>{t('not_found')}</p>
         </div>
       );
     }
@@ -36,10 +34,10 @@ export function VenueDetailPage() {
     return (
       <div className='flex flex-col items-center justify-center py-16 text-red-600'>
         <AlertCircle className='w-10 h-10 mb-4' />
-        <p className='text-lg font-medium'>{t('error')}</p>
+        <p className='text-lg font-medium'>{t('error.fetch_failed')}</p>
       </div>
     );
   }
 
-  return <VenueDetail venue={venue} />;
+  return <SpaceDetail space={space} />;
 }
