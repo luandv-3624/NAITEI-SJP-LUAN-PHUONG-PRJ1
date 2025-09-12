@@ -20,6 +20,10 @@ export async function signUp(signUpDto: SignUpDto): Promise<User> {
   return data.data.user;
 }
 
+export async function verifyEmail({ token }: { token: string }): Promise<void> {
+  await axios.post(`${ENDPOINT}/verify`, { token });
+}
+
 export async function getProfile(): Promise<User> {
   const { data } = await axios.get(PROFILE_ENDPOINT);
   return data.data;
