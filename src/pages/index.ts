@@ -4,3 +4,5 @@ export { SignUp } from './SignUp';
 export { SignUpSuccess } from './SignUpSuccess';
 export * from './client';
 export { VerifyAccount } from './VerifyAccount';
+export { ForgotPassword } from './ForgotPassword';
+export { ResetPassword } from './ResetPassowrd';
