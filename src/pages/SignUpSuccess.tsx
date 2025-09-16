@@ -23,17 +23,17 @@ export function SignUpSuccess() {
   return (
     <Card className='p-0 overflow-hidden'>
       <CardContent className='p-0'>
-        <div className='bg-green-400 flex flex-col items-center justify-center p-4'>
-          <CircleCheckBig className='size-16 text-white' />
-          <p className='text-base font-bold text-white'>{t('success')}</p>
+        <div className='bg-foreground p-6 flex flex-col justify-center items-center gap-2'>
+          <CircleCheckBig className='size-16 text-secondary' />
+          <p className='text-sm font-bold text-secondary'>{t('success')}</p>
         </div>
-        <div className='p-4 flex flex-col items-center gap-4'>
+        <div className='p-4 flex flex-col items-center'>
           <p className='text-sm'>{t('congratulation_account_created')}</p>
           <p className='text-sm'>
             {t('go_to_email_verify_account')}{' '}
             <b className='text-bold'>{email}</b>
           </p>
-          <Button asChild size='sm' className='min-w-20'>
+          <Button asChild size='sm' className='min-w-20 mt-4'>
             <Link to='/sign-in'>
               {t('login')} <ArrowRight />
             </Link>
