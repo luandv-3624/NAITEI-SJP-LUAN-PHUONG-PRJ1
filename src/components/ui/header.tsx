@@ -73,7 +73,10 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Avatar className='cursor-pointer ring-2 ring-indigo-200'>
-                <AvatarImage src='https://github.com/shadcn.png' alt='User' />
+                <AvatarImage
+                  src='https://ca.slack-edge.com/E028JVBUY4F-U06PMNCPVPT-9c2f971890ca-512'
+                  alt='User'
+                />
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>

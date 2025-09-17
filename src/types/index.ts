@@ -6,3 +6,4 @@ export { type Province } from './province';
 export { type Ward } from './ward';
 export { type Amenity } from './amenity';
 export { type Venue } from './venue';
+export { type AxiosError } from './axios-error';
