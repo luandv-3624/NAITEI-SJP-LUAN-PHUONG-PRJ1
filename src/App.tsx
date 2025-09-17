@@ -1,5 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { Home, SignIn, SignUp, SignUpSuccess, VerifyAccount } from './pages';
+import {
+  ForgotPassword,
+  Home,
+  ResetPassword,
+  SignIn,
+  SignUp,
+  SignUpSuccess,
+  VerifyAccount,
+} from './pages';
 import { AuthLayout, MainLayout, SignInOutLayout } from './layouts';
 import { useThemeEffect } from './features/theme';
 import { VenueDetailPage, SpaceDetailPage } from './pages';
@@ -31,6 +39,8 @@ function App() {
           </Route>
           <Route path='/sign-up-success' element={<SignUpSuccess />} />
           <Route path='/verify-email' element={<VerifyAccount />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
         </Route>
       </Routes>
     </BrowserRouter>
