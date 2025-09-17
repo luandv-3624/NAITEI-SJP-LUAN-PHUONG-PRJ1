@@ -2,9 +2,15 @@ import Axios from 'axios';
 import { tokenService } from './token-service';
 import { store } from '@/atoms';
 import { isLoginAtom } from '@/features/auth';
+import i18n from '@/i18n';
 
 export const axios = Axios.create({
   baseURL: '/api',
+});
+
+axios.interceptors.request.use((config) => {
+  config.headers['Accept-Language'] = i18n.language || 'en';
+  return config;
 });
 
 export const REFRESH_ENDPOINT = '/auth/refresh-token';

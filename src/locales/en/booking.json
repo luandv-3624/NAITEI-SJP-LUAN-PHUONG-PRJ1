@@ -1,0 +1,7 @@
+{
+  "booking_success": "Booking success",
+  "booking_failed": "Booking failed",
+  "required_start": "Please select a start time",
+  "required_end": "Please select an end time",
+  "end_after_start": "End time must be after start time"
+}

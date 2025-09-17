@@ -6,7 +6,7 @@
   },
   "status": {
     "available": "Có sẵn",
-    "occupied": "Đã đặt"
+    "unavailable": "Không có sẵn"
   },
   "booking": {
     "reserve_now": "Đặt ngay",
@@ -19,7 +19,8 @@
     "end_time": "Thời gian kết thúc",
     "summary": "Tóm tắt đặt phòng",
     "total": "Tổng cộng",
-    "confirm": "Xác nhận đặt phòng",
+    "confirm_booking": "Xác nhận đặt phòng",
+    "booking_in_progress": "Đang xử lý yêu cầu...",
     "space": "Không gian",
     "capacity": "Sức chứa",
     "price": "Giá"

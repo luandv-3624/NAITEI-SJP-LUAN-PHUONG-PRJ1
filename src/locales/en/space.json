@@ -6,7 +6,7 @@
   },
   "status": {
     "available": "Available",
-    "occupied": "Occupied"
+    "unavailable": "Unavailable"
   },
   "booking": {
     "reserve_now": "Reserve Now",
@@ -19,7 +19,8 @@
     "end_time": "End Time",
     "summary": "Booking Summary",
     "total": "Total",
-    "confirm": "Confirm Booking",
+    "confirm_booking": "Confirm Booking",
+    "booking_in_progress": "Booking in progress...",
     "space": "Space",
     "capacity": "Capacity",
     "price": "Price"
