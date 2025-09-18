@@ -15,5 +15,12 @@
     "logout": "Logout",
     "profile": "Profile"
   },
-  "footer": "© 2025 LP CoWorkSpace. All rights reserved."
+  "header": {
+    "booking-history": "Booking history"
+  },
+  "footer": "© 2025 LP CoWorkSpace. All rights reserved.",
+  "rows_per_page": "Rows per page",
+  "page_size": "Page size",
+  "previous": "Previous",
+  "next": "Next"
 }

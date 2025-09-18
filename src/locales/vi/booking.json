@@ -3,5 +3,49 @@
   "booking_failed": "Đặt phòng thất bại",
   "required_start": "Vui lòng chọn thời gian bắt đầu",
   "required_end": "Vui lòng chọn thời gian kết thúc",
-  "end_after_start": "Thời gian kết thúc phải sau thời gian bắt đầu"
+  "end_after_start": "Thời gian kết thúc phải sau thời gian bắt đầu",
+  "payment_status": {
+    "paid": "Đã thanh toán",
+    "unpaid": "Chưa thanh toán",
+    "partial": "Thanh toán một phần"
+  },
+  "booking_status": {
+    "pending": "Đang chờ xác nhận",
+    "confirmed-unpaid": "Đã xác nhận (chưa trả)",
+    "paid-pending": "Đã trả (chờ xác nhận)",
+    "partial-pending": "Trả một phần (chờ xác nhận)",
+    "accepted": "Đã chấp nhận",
+    "done": "Hoàn thành",
+    "rejected": "Bị từ chối",
+    "cancelled": "Đã hủy"
+  },
+  "booking_history": {
+    "title": "Lịch sử đặt chỗ",
+    "yourBookings": "Đặt chỗ của bạn ({{total}})",
+    "table": {
+      "id": "Mã",
+      "space": "Không gian",
+      "duration": "Thời gian",
+      "status": "Trạng thái",
+      "payment": "Thanh toán",
+      "total": "Tổng cộng",
+      "actions": "Hành động"
+    },
+    "loading": "Đang tải...",
+    "no_bookings": "Chưa có đặt chỗ nào",
+    "people": "{{count}} người",
+    "start": "Bắt đầu",
+    "end": "Kết thúc",
+    "view": "Xem"
+  },
+  "filter": {
+    "search": "Tìm kiếm",
+    "search_placeholder": "Tìm theo tên không gian...",
+    "status": "Trạng thái",
+    "all_status": "Tất cả trạng thái",
+    "payment": "Thanh toán",
+    "all_payments": "Tất cả thanh toán",
+    "start_date": "Ngày bắt đầu",
+    "end_date": "Ngày kết thúc"
+  }
 }

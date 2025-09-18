@@ -1,5 +1,6 @@
 import { axios } from './axios';
-import { CreateBookingResponse } from '@/features/booking';
+import { CreateBookingResponse, BookingMeResponse } from '@/features/booking';
+import { BookingFilterParams } from '@/features/booking';
 
 const BOOKING_ENDPOINT = '/bookings';
 
@@ -14,4 +15,12 @@ export async function createBooking(bookingData: {
   );
 
   return data;
+}
+
+export async function getBookingMe(
+  params: BookingFilterParams,
+): Promise<BookingMeResponse> {
+  const { data } = await axios.get(`${BOOKING_ENDPOINT}/me`, { params });
+
+  return data.data;
 }

@@ -12,4 +12,5 @@ export type Booking = {
   end_time: string;
   checkin: string | null;
   checkout: string | null;
+  created_at: string;
 };

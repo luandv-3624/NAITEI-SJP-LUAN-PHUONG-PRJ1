@@ -10,7 +10,7 @@ import {
 } from './pages';
 import { AuthLayout, MainLayout, SignInOutLayout } from './layouts';
 import { useThemeEffect } from './features/theme';
-import { VenueDetailPage, SpaceDetailPage } from './pages';
+import { VenueDetailPage, SpaceDetailPage, BookingHistoryPage } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
 
@@ -31,6 +31,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/venues/:venueId' element={<VenueDetailPage />} />
           <Route path='/spaces/:spaceId' element={<SpaceDetailPage />} />
+          <Route path='/bookings' element={<BookingHistoryPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route element={<SignInOutLayout />}>
