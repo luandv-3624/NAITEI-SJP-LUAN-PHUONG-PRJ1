@@ -1,6 +1,7 @@
 import { useGetProfile } from '@/features/auth';
 import { Info } from '@/features/home';
 import { LangSelector } from '@/features/locale';
+import { Filters } from '@/features/space';
 import { ThemeToggle } from '@/features/theme';
 
 export function Home() {
@@ -17,6 +18,7 @@ export function Home() {
           <p>{user.name}</p>
         </div>
       )}
+      <Filters />
     </div>
   );
 }
