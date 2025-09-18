@@ -4,3 +4,4 @@ export { StarRating } from './star-rating';
 export { InfoCard } from './info-card';
 export { ContactItem } from './contact-item';
 export { AmenityItem } from './amenity-item';
+export { Filters } from './filters';
