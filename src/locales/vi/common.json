@@ -22,5 +22,7 @@
   "rows_per_page": "Số dòng mỗi trang",
   "page_size": "Kích thước trang",
   "previous": "Trang trước",
-  "next": "Trang sau"
+  "next": "Trang sau",
+  "dashboard": "Bảng điều khiển",
+  "home": "Trang chủ"
 }

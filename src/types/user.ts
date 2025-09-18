@@ -6,7 +6,7 @@ export type User = {
   email_verified_at: string;
   status: string;
   role: {
-    id: string;
+    id: number;
     name: string;
   };
   created_at: string;

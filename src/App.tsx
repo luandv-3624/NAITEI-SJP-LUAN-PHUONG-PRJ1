@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import {
+  Dashboard,
   ForgotPassword,
   Home,
   ResetPassword,
@@ -13,12 +14,13 @@ import { useThemeEffect } from './features/theme';
 import { VenueDetailPage, SpaceDetailPage, BookingHistoryPage } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
+import AdminLayout from './layouts/AdminLayout';
 
 function App() {
   useThemeEffect();
 
   const { isLoading } = useSilentRefresh();
-  const { isEnabled, isLoading: isProfileLoading } = useGetProfile();
+  const { isEnabled, isPending: isProfileLoading } = useGetProfile();
 
   if (isLoading || (isEnabled && isProfileLoading)) {
     return null;
@@ -42,6 +44,11 @@ function App() {
           <Route path='/verify-email' element={<VerifyAccount />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/reset-password' element={<ResetPassword />} />
+        </Route>
+        <Route path='/dashboard'>
+          <Route path='admin' element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
