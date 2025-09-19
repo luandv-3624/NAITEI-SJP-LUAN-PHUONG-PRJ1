@@ -22,5 +22,7 @@
   "rows_per_page": "Rows per page",
   "page_size": "Page size",
   "previous": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "dashboard": "Dashboard",
+  "home": "Home"
 }
