@@ -1,5 +1,5 @@
 import { MenuLayout } from '@/types/menu-layout';
-import { LayoutGrid, LucideIcon } from 'lucide-react';
+import { Building, LayoutGrid, LucideIcon } from 'lucide-react';
 
 type Submenu = {
   href: string;
@@ -37,6 +37,27 @@ export function getMenuList(layout: MenuLayout): Group[] {
         },
       ];
     case MenuLayout.OWNER:
-      return [];
+      return [
+        {
+          groupLabel: '',
+          menus: [
+            {
+              href: '',
+              icon: Building,
+              label: 'venues',
+              submenus: [
+                {
+                  href: '/dashboard/om/venues',
+                  label: 'my_venues',
+                },
+                {
+                  href: '/dashboard/om/create-venue',
+                  label: 'create_venue',
+                },
+              ],
+            },
+          ],
+        },
+      ];
   }
 }

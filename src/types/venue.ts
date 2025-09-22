@@ -1,4 +1,4 @@
-import { Ward, Space } from '@/types';
+import { Ward, Space, User } from '@/types';
 
 export type Venue = {
   id: number;
@@ -13,4 +13,5 @@ export type Venue = {
   status: string;
   ward: Ward;
   spaces: Space[];
+  owner: User;
 };

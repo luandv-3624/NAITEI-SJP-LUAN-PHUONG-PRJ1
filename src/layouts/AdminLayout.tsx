@@ -4,7 +4,7 @@ import { MenuLayout } from '@/types/menu-layout';
 import { Role } from '@/types/role';
 import { Navigate, Outlet } from 'react-router';
 
-function AdminLayout() {
+export function AdminLayout() {
   const { data: user, isPending, isError } = useGetProfile();
 
   if (isPending) {
@@ -21,4 +21,3 @@ function AdminLayout() {
     </AdminPanelLayout>
   );
 }
-export default AdminLayout;
