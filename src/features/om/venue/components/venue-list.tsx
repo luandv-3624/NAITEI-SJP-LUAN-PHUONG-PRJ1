@@ -1,22 +1,20 @@
 import { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  BookingFilterParams,
-  BookingHistoryPagination,
-} from '@/features/booking';
-import { BookingHistoryFilter } from '@/features/booking';
-import { BookingHistoryTable } from '@/features/booking';
+import { VenueFilter } from './venue-filter';
+import { VenueTable } from './venue-table';
+import { VenuePagination } from './venue-pagination';
 import { useDebounce, usePagination } from '@/hooks';
-import { useGetBookingMe } from '@/features/booking';
+import { useGetVenues } from '@/features/om/venue';
 import { useTranslation } from 'react-i18next';
 import { PageSize } from '@/constants';
+import { VenueFilterParams } from '@/features/om/venue';
 
 export const FILTER_VALUES = {
   ALL: 'all',
 } as const;
 
-export function BookingHistory() {
-  const { t } = useTranslation('booking');
+export function VenueList() {
+  const { t } = useTranslation('venue');
   const {
     page: currentPage,
     setPage: setCurrentPage,
@@ -24,57 +22,56 @@ export function BookingHistory() {
     setPageSize,
   } = usePagination();
 
-  const [filters, setFilters] = useState<BookingFilterParams>({
+  const [filters, setFilters] = useState<VenueFilterParams>({
     page: currentPage,
     pageSize: pageSize,
-    search: '',
+    name: '',
+    address: '',
+    ownerId: '',
+    wardId: '',
     status: FILTER_VALUES.ALL,
-    statusPayment: FILTER_VALUES.ALL,
-    startTime: '',
-    endTime: '',
     sortBy: 'created_at',
     sortOrder: 'desc',
   });
 
-  const debouncedSearch = useDebounce(filters.search, 500);
+  const debouncedName = useDebounce(filters.name, 500);
+  const debouncedAddress = useDebounce(filters.address, 500);
 
-  const params: BookingFilterParams = {
+  const params: VenueFilterParams = {
     page: currentPage,
     pageSize,
+    name: debouncedName || undefined,
+    address: debouncedAddress || undefined,
+    ownerId: filters.ownerId || undefined,
+    wardId: filters.wardId || undefined,
     status: filters.status !== FILTER_VALUES.ALL ? filters.status : undefined,
-    statusPayment:
-      filters.statusPayment !== FILTER_VALUES.ALL
-        ? filters.statusPayment
-        : undefined,
-    search: debouncedSearch || undefined,
-    startTime: filters.startTime || undefined,
-    endTime: filters.endTime || undefined,
     sortBy: filters.sortBy,
     sortOrder: filters.sortOrder,
   };
 
-  const { data, isPending, isFetching } = useGetBookingMe(params);
+  const { data, isPending, isFetching } = useGetVenues(params);
 
-  const bookings = data?.data || [];
+  const venues = data?.data || [];
   const totalRecords = data?.meta?.total || 0;
   const totalPages = data?.meta?.last_page || 1;
 
-  const handleFilterChange = useCallback((key: string, value: string) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
-    setCurrentPage(1);
-  }, []);
+  const handleFilterChange = useCallback(
+    (key: string, value: string) => {
+      setFilters((prev) => ({ ...prev, [key]: value }));
+      setCurrentPage(1);
+    },
+    [setCurrentPage],
+  );
 
   return (
     <div className='min-h-screen p-4 md:p-6'>
       <div className='max-w-7xl mx-auto'>
-        <h1 className='text-3xl font-bold text-gray-900 mb-6'>
-          {t('booking_history.title')}
-        </h1>
-
         <Card className='mb-6'>
-          <CardHeader></CardHeader>
+          <CardHeader>
+            <CardTitle>{t('venue_list.filter_title')}</CardTitle>
+          </CardHeader>
           <CardContent>
-            <BookingHistoryFilter
+            <VenueFilter
               filters={filters}
               onFilterChange={handleFilterChange}
             />
@@ -84,17 +81,17 @@ export function BookingHistory() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {t('booking_history.yourBookings', { total: totalRecords })}
+              {t('venue_list.total_venues', { total: totalRecords })}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <BookingHistoryTable
-              bookings={bookings}
+            <VenueTable
+              venues={venues}
               isPending={isPending}
               isFetching={isFetching}
             />
 
-            <BookingHistoryPagination
+            <VenuePagination
               currentPage={currentPage}
               pageSize={pageSize}
               totalPages={totalPages}

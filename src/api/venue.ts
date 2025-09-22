@@ -6,6 +6,8 @@ import {
 } from '@/features/venue';
 import { axios } from './axios';
 import { Venue, Space, Paginated, Response } from '@/types';
+import { VenueFilterParams, VenueListResponse } from '@/features/om/venue';
+import { VenueStatus } from '@/constants';
 
 const VENUE_ENDPOINT = '/venues';
 
@@ -27,6 +29,12 @@ export async function getMyVenues(
   const { data } = await axios.get(`${VENUE_ENDPOINT}/mine`, {
     params: query,
   });
+  return data.data;
+}
+export async function getVenues(
+  params?: VenueFilterParams,
+): Promise<VenueListResponse> {
+  const { data } = await axios.get(`${VENUE_ENDPOINT}`, { params });
 
   return data.data;
 }
@@ -47,6 +55,20 @@ export async function updateVenue({
   id: string;
 }): Promise<Response<Venue>> {
   const { data } = await axios.put(`${VENUE_ENDPOINT}/${id}`, updateVenueDto);
+
+  return data;
+}
+
+export async function updateStatusVenue({
+  venueId,
+  status,
+}: {
+  venueId: string;
+  status: VenueStatus;
+}): Promise<Response<Venue>> {
+  const { data } = await axios.put(`${VENUE_ENDPOINT}/${venueId}/status`, {
+    status,
+  });
 
   return data;
 }

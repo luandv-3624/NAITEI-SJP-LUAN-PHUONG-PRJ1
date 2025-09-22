@@ -44,6 +44,10 @@
     "approved": "Đã duyệt",
     "available": "Có sẵn"
   },
+  "all": "Tất cả",
+  "approved": "Đã duyệt",
+  "pending": "Chờ xác nhận",
+  "blocked": "Đã khóa",
   "error": "Không thể tải chi tiết địa điểm.",
   "notFound": "Không tìm thấy địa điểm.",
   "owner": "Chủ sở hữu",
@@ -51,9 +55,6 @@
   "manage": "Quản lý",
   "no_venue": "Không có địa điểm",
   "my_venues": "Địa điểm của tôi",
-  "pending": "Đang chờ",
-  "approved": "Đã duyệt",
-  "blocked": "Bị chặn",
   "new": "Mới",
   "create_venue": "Tạo địa điểm",
   "edit": "Chỉnh sửa",
@@ -76,5 +77,38 @@
   "lat_invalid": "Vĩ độ phải là một số hợp lệ",
   "lat_range": "Vĩ độ phải nằm trong khoảng từ -90 đến 90",
   "lng_invalid": "Kinh độ phải là một số hợp lệ",
-  "lng_range": "Kinh độ phải nằm trong khoảng từ -180 đến 180"
+  "lng_range": "Kinh độ phải nằm trong khoảng từ -180 đến 180",
+  "venue_list": {
+    "title": "Danh sách địa điểm",
+    "filter_title": "Lọc địa điểm",
+    "total_venues": "Tổng số địa điểm: {{total}}"
+  },
+  "filter": {
+    "venue_name": "Tên địa điểm",
+    "search_venue_placeholder": "Tìm theo tên địa điểm...",
+    "address": "Địa chỉ",
+    "search_address_placeholder": "Tìm theo địa chỉ...",
+    "status": "Trạng thái",
+    "all_status": "Tất cả",
+    "sort_by": "Sắp xếp theo",
+    "sort_by_placeholder": "Chọn tùy chọn sắp xếp..."
+  },
+  "table": {
+    "id": "ID",
+    "venue_info": "Thông tin địa điểm",
+    "location": "Vị trí",
+    "owner": "Chủ sở hữu",
+    "managers": "Quản lý",
+    "status": "Trạng thái",
+    "actions": "Hành động",
+    "created_at": "Ngày tạo"
+  },
+  "rows_per_page": "Số dòng mỗi trang",
+  "view": "Xem",
+  "no_venues": "Không tìm thấy địa điểm.",
+  "sort": {
+    "created_at": "Ngày tạo",
+    "name": "Tên",
+    "status": "Trạng thái"
+  }
 }

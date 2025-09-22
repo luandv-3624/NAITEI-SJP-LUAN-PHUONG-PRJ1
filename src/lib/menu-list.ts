@@ -31,7 +31,12 @@ export function getMenuList(layout: MenuLayout): Group[] {
               href: '/dashboard/admin',
               label: 'dashboard',
               icon: LayoutGrid,
-              submenus: [],
+              submenus: [
+                {
+                  href: '/dashboard/admin/venues',
+                  label: 'venue_list',
+                },
+              ],
             },
           ],
         },

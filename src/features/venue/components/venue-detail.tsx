@@ -84,7 +84,7 @@ export function VenueDetail({ venue }: { venue: Venue }) {
   };
 
   return (
-    <div className='bg-gray-50 min-h-screen'>
+    <div className='min-h-screen'>
       <div>
         <div className='max-w-7xl mx-auto px-4 md:px-8 mt-6'>
           <div className='relative w-full h-[400px] rounded-2xl overflow-hidden'>
@@ -106,7 +106,7 @@ export function VenueDetail({ venue }: { venue: Venue }) {
         <div className='lg:col-span-3'>
           <div
             ref={tabRef}
-            className='sticky top-18 z-10 bg-white rounded-lg shadow-sm mb-8 border'
+            className='sticky top-18 z-10 rounded-lg shadow-sm mb-8 border bg-background'
           >
             <Tabs value={activeTab} onValueChange={handleTabChange}>
               <TabsList className='w-full bg-transparent border-0 p-0 h-auto'>
@@ -134,38 +134,32 @@ export function VenueDetail({ venue }: { venue: Venue }) {
 
           <Card id='overview-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6'>
-              <h2 className='text-2xl font-bold mb-4 text-gray-900'>
+              <h2 className='text-2xl font-bold mb-4'>
                 {t('overview.title', { name: venue.name })}
               </h2>
               <p className='text-gray-700 leading-relaxed mb-6'>
                 {venue.description}
               </p>
 
-              <div className='grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-blue-50 rounded-lg'>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-4 p-4 rounded-lg'>
                 <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>
+                  <div className='text-2xl font-bold'>
                     {venue.spaces.length}
                   </div>
-                  <div className='text-sm text-gray-600'>
-                    {t('overview.totalSpaces')}
-                  </div>
+                  <div className='text-sm'>{t('overview.totalSpaces')}</div>
                 </div>
                 <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>
+                  <div className='text-2xl font-bold'>
                     {venue.spaces.reduce(
                       (total, space) => total + space.capacity,
                       0,
                     )}
                   </div>
-                  <div className='text-sm text-gray-600'>
-                    {t('overview.totalCapacity')}
-                  </div>
+                  <div className='text-sm'>{t('overview.totalCapacity')}</div>
                 </div>
                 <div className='text-center'>
-                  <div className='text-2xl font-bold text-blue-600'>24/7</div>
-                  <div className='text-sm text-gray-600'>
-                    {t('overview.support')}
-                  </div>
+                  <div className='text-2xl font-bold'>24/7</div>
+                  <div className='text-sm'>{t('overview.support')}</div>
                 </div>
               </div>
             </div>
@@ -173,9 +167,7 @@ export function VenueDetail({ venue }: { venue: Venue }) {
 
           <Card id='location-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6'>
-              <h2 className='text-2xl font-bold mb-6 text-gray-900'>
-                {t('location.title')}
-              </h2>
+              <h2 className='text-2xl font-bold mb-6'>{t('location.title')}</h2>
               <div className='mb-4'>
                 <div className='flex items-start gap-3'>
                   <MapPin className='w-5 h-5 text-blue-600 mt-0.5' />
@@ -208,9 +200,7 @@ export function VenueDetail({ venue }: { venue: Venue }) {
 
           <Card id='spaces-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6 relative'>
-              <h2 className='text-2xl font-bold mb-6 text-gray-900'>
-                {t('spaces.title')}
-              </h2>
+              <h2 className='text-2xl font-bold mb-6'>{t('spaces.title')}</h2>
 
               <Carousel
                 opts={{
@@ -223,14 +213,14 @@ export function VenueDetail({ venue }: { venue: Venue }) {
                 <CarouselContent className='w-full pl-2'>
                   {venue.spaces.map((space) => (
                     <CarouselItem key={space.id} className='basis-full'>
-                      <div className='border rounded-xl p-6 hover:shadow-md transition-all duration-200 bg-white h-full flex flex-col'>
+                      <div className='border rounded-xl p-6 hover:shadow-md transition-all duration-200 h-full flex flex-col'>
                         {/* Header */}
                         <div className='flex justify-between items-start mb-4'>
                           <div>
                             <h3 className='text-xl font-semibold mb-2'>
                               {space.name}
                             </h3>
-                            <div className='flex items-center gap-4 text-gray-600 mb-3'>
+                            <div className='flex items-center gap-4 mb-3'>
                               <div className='flex items-center gap-2'>
                                 <Users className='w-4 h-4' />
                                 <span>
@@ -286,8 +276,8 @@ export function VenueDetail({ venue }: { venue: Venue }) {
                   ))}
                 </CarouselContent>
 
-                <CarouselPrevious className='absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full' />
-                <CarouselNext className='absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full' />
+                <CarouselPrevious className='absolute left-2 top-1/2 -translate-y-1/2 shadow-md rounded-full' />
+                <CarouselNext className='absolute right-2 top-1/2 -translate-y-1/2 shadow-md rounded-full' />
               </Carousel>
             </div>
           </Card>
@@ -301,15 +291,15 @@ export function VenueDetail({ venue }: { venue: Venue }) {
                   {t('contact.title')}
                 </h3>
                 <div className='space-y-3'>
-                  <div className='flex items-center gap-3 text-gray-600'>
+                  <div className='flex items-center gap-3'>
                     <Phone className='w-4 h-4' />
                     <span className='text-sm'>{t('contact.phone')}</span>
                   </div>
-                  <div className='flex items-center gap-3 text-gray-600'>
+                  <div className='flex items-center gap-3'>
                     <Mail className='w-4 h-4' />
                     <span className='text-sm'>{t('contact.mail')}</span>
                   </div>
-                  <div className='flex items-center gap-3 text-gray-600'>
+                  <div className='flex items-center gap-3'>
                     <Clock className='w-4 h-4' />
                     <span className='text-sm'>{t('contact.responseTime')}</span>
                   </div>
