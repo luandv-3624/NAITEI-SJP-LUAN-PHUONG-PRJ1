@@ -6,16 +6,11 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/ui/dialog';
-import { useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import QRCode from 'react-qr-code';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
-import { paymentFormSchema } from '@/features/booking';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -23,10 +18,11 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
-import { toast } from 'sonner';
+import { usePayment } from '@/features/booking';
+import { Booking } from '@/types';
 
 interface PaymentModalProps {
-  booking: any;
+  booking: Booking;
   totalPaid: number;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -40,55 +36,18 @@ export function PaymentModal({
 }: PaymentModalProps) {
   const { t } = useTranslation('booking');
 
-  const remaining = useMemo(
-    () => parseFloat(booking.total_price) - totalPaid,
-    [booking.total_price, totalPaid],
-  );
+  const {
+    form,
+    paymentMode,
+    setPaymentMode,
+    loading,
+    onSubmit,
+    qrData,
+    resetState,
+    remaining,
+  } = usePayment(booking, totalPaid, () => onOpenChange(false));
 
-  const form = useForm({
-    resolver: zodResolver(paymentFormSchema(remaining)),
-    defaultValues: {
-      partialAmount: '',
-    },
-    mode: 'onChange',
-  });
-
-  const [paymentMode, setPaymentMode] = useState<'full' | 'partial'>('full');
-  const [loading, setLoading] = useState(false);
-  const [qrData, setQrData] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!open) {
-      setQrData(null);
-      form.reset();
-      setPaymentMode('full');
-      setLoading(false);
-    }
-  }, [open, form]);
-
-  // Simulating QR generation here with setTimeout.
-  // In reality, this will call the payment API in the next PR.
-  const onSubmit = async (values: { partialAmount: string }) => {
-    const paidAmount =
-      paymentMode === 'full' ? remaining : parseFloat(values.partialAmount);
-
-    if (!paidAmount || paidAmount <= 0 || paidAmount > remaining) {
-      alert(t('payment.invalid_amount'));
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const res = await new Promise<string>((resolve) =>
-        setTimeout(() => resolve(`QR-${paidAmount}-${Date.now()}`), 2000),
-      );
-      setQrData(res);
-    } catch (err) {
-      toast.error('Lỗi khi tạo QR!');
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!open && qrData) resetState();
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -185,10 +144,9 @@ export function PaymentModal({
 
           {qrData && (
             <div className='bg-gray-100 p-4 rounded-lg'>
-              <p className='font-mono text-xs break-all mb-2'>{qrData}</p>
               <div className='flex justify-center'>
                 <QRCode
-                  value={qrData}
+                  value={qrData.qrCode}
                   size={128}
                   bgColor='#f3f4f6'
                   fgColor='#111827'

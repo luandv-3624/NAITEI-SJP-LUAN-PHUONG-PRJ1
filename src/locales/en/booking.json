@@ -95,7 +95,13 @@
     "btn_pay": "Pay",
     "btn_processing": "Processing...",
     "error_invalid_amount": "Invalid amount!",
-    "error_generate_qr": "Failed to generate QR!"
+    "error_generate_qr": "Failed to generate QR!",
+    "invalid_amount": "Invalid payment amount",
+    "success": "Payment successful",
+    "failed_or_canceled": "Payment failed or canceled",
+    "required_amount": "Amount is required",
+    "create_payment_success": "Payment created successfully",
+    "create_payment_failed": "Failed to create payment"
   },
   "not_found": "Booking not found",
   "error": {
