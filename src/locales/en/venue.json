@@ -110,5 +110,13 @@
     "created_at": "Created At",
     "name": "Name",
     "status": "Status"
-  }
+  },
+  "add_managers": "Add Managers",
+  "add_managers_description": "Assign managers to help manage this space.",
+  "cancel": "Cancel",
+  "manage_spaces": "Manage Spaces",
+  "no_managers": "No managers assigned.",
+  "managers_list": "Managers List",
+  "managers_list_description": "The following users are assigned as managers for this space.",
+  "manager_required": "At least one manager is required."
 }

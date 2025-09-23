@@ -27,7 +27,16 @@ import {
 } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
-import { CreateVenue, ManageVenue, MyVenues, UpdateVenue } from './pages/om';
+import {
+  CreateSpace,
+  CreateVenue,
+  ManageVenue,
+  MyVenues,
+  SpaceDetail,
+  SpacesByVenues,
+  UpdateSpace,
+  UpdateVenue,
+} from './pages/om';
 
 function App() {
   useThemeEffect();
@@ -70,6 +79,19 @@ function App() {
           <Route path='om' element={<OMLayout />}>
             <Route path='venues' element={<MyVenues />} />
             <Route path='venues/:venueId' element={<ManageVenue />} />
+            <Route path='venues/:venueId/spaces' element={<SpacesByVenues />} />
+            <Route
+              path='venues/:venueId/spaces/create'
+              element={<CreateSpace />}
+            />
+            <Route
+              path='venues/:venueId/spaces/:spaceId/edit'
+              element={<UpdateSpace />}
+            />
+            <Route
+              path='venues/:venueId/spaces/:spaceId'
+              element={<SpaceDetail />}
+            />
             <Route path='venues/:venueId/update' element={<UpdateVenue />} />
             <Route path='create-venue' element={<CreateVenue />} />
             <Route path='bookings' element={<BookingListPage />} />

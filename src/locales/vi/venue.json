@@ -110,5 +110,13 @@
     "created_at": "Ngày tạo",
     "name": "Tên",
     "status": "Trạng thái"
-  }
+  },
+  "add_managers": "Thêm người quản lý",
+  "add_managers_description": "Chỉ định người quản lý để hỗ trợ quản lý không gian này.",
+  "cancel": "Hủy",
+  "manage_spaces": "Quản lý không gian",
+  "no_managers": "Chưa có người quản lý nào.",
+  "managers_list": "Danh sách người quản lý",
+  "managers_list_description": "Những người sau đây được chỉ định là người quản lý cho không gian này.",
+  "manager_required": "Cần ít nhất một người quản lý."
 }
