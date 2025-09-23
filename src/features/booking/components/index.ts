@@ -10,3 +10,5 @@ export { BookingHistoryDetailSkeleton } from './booking-history-detail-skeleton'
 export { BookingHistoryTimeInfoCard } from './booking-history-time-info-card';
 export { BookingHistorySpaceInfoCard } from './booking-history-space-info-card';
 export { BookingHistoryPaymentInfoCard } from './booking-history-payment-info-card';
+export { BookingStatusBadge } from './booking-status-badge';
+export { PaymentStatusBadge } from './payment-status-badge';

@@ -38,6 +38,18 @@
     "end": "Kết thúc",
     "view": "Xem"
   },
+  "booking_list": {
+    "title": "Danh sách đặt chỗ",
+    "table": {
+      "customer": "Khách hàng",
+      "check": "Nhận phòng"
+    },
+    "bookings": "Tổng đơn đặt ({{total}})",
+    "not_venues": "Chưa có địa điểm.",
+    "all_venues": "Tất cả địa điểm",
+    "check_in": "Nhận phòng",
+    "check_out": "Trả phòng"
+  },
   "filter": {
     "search": "Tìm kiếm",
     "search_placeholder": "Tìm theo tên không gian...",
@@ -46,7 +58,8 @@
     "payment": "Thanh toán",
     "all_payments": "Tất cả thanh toán",
     "start_date": "Ngày bắt đầu",
-    "end_date": "Ngày kết thúc"
+    "end_date": "Ngày kết thúc",
+    "venue": "Địa chỉ"
   },
   "back_list": "Quay lại danh sách đặt chỗ",
   "title_detail": "Chi tiết đặt chỗ #{{id}}",

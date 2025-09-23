@@ -8,31 +8,67 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Eye, MapPin, Users, Calendar } from 'lucide-react';
-import { BookingStatusBadge } from './booking-status-badge';
-import { PaymentStatusBadge } from './payment-status-badge';
+import {
+  Eye,
+  MapPin,
+  User,
+  Users,
+  Calendar,
+  LogOut,
+  LogIn,
+  MoreVertical,
+} from 'lucide-react';
+import { BookingStatusBadge, PaymentStatusBadge } from '@/features/booking';
 import { useTranslation } from 'react-i18next';
 import { Booking } from '@/types';
 import { formatPrice } from '@/lib';
 import { useDateTimeFormatter } from '@/features/booking';
 import { Link } from 'react-router';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu';
+import { BOOKING_STATUS, BookingStatus } from '@/constants';
+import {
+  useCheckin,
+  useCheckout,
+  useUpdateStatus,
+} from '@/features/om/booking';
 
-interface BookingHistoryTableProps {
+interface BookingListTableProps {
   bookings: Booking[];
   isPending: boolean;
   isFetching: boolean;
 }
 
-export function BookingHistoryTable({
+export function BookingListTable({
   bookings,
   isPending,
   isFetching,
-}: BookingHistoryTableProps) {
+}: BookingListTableProps) {
   const { t } = useTranslation('booking');
-  const { formatDateTime } = useDateTimeFormatter();
+  const { formatDate, formatDateTime } = useDateTimeFormatter();
 
   const isInitialLoading = isPending && bookings.length === 0;
   const isUpdating = isFetching && !isInitialLoading;
+
+  const checkInMutation = useCheckin();
+  const checkOutMutation = useCheckout();
+  const updateStatusMutation = useUpdateStatus();
+
+  const handleCheckin = (id: string) => {
+    checkInMutation.mutate(id);
+  };
+
+  const handleCheckout = (id: string) => {
+    checkOutMutation.mutate(id);
+  };
+
+  const handleUpdateStatus = (id: string, status: BookingStatus) => {
+    updateStatusMutation.mutate({ bookingId: id, status });
+  };
 
   return (
     <div className='relative overflow-x-auto'>
@@ -46,14 +82,17 @@ export function BookingHistoryTable({
         <TableHeader>
           <TableRow>
             <TableHead>{t('booking_history.table.id')}</TableHead>
+            <TableHead>{t('booking_list.table.customer')}</TableHead>
             <TableHead>{t('booking_history.table.space')}</TableHead>
             <TableHead>{t('booking_history.table.duration')}</TableHead>
             <TableHead>{t('booking_history.table.status')}</TableHead>
             <TableHead>{t('booking_history.table.payment')}</TableHead>
+            <TableHead>{t('booking_list.table.check')}</TableHead>
             <TableHead>{t('booking_history.table.total')}</TableHead>
             <TableHead>{t('booking_history.table.actions')}</TableHead>
           </TableRow>
         </TableHeader>
+
         <TableBody>
           {isInitialLoading ? (
             Array.from({ length: 5 }).map((_, i) => (
@@ -67,7 +106,7 @@ export function BookingHistoryTable({
             ))
           ) : bookings.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={7} className='py-8 text-center'>
+              <TableCell colSpan={9} className='py-8 text-center'>
                 <Calendar className='w-12 h-12 mx-auto mb-4 text-gray-300' />
                 {t('booking_history.no_bookings')}
               </TableCell>
@@ -78,9 +117,22 @@ export function BookingHistoryTable({
                 <TableCell>
                   <div className='font-medium'>#{b.id}</div>
                   <div className='text-sm text-gray-500'>
-                    {formatDateTime(b.created_at)}
+                    {formatDate(b.created_at)}
                   </div>
                 </TableCell>
+
+                <TableCell>
+                  <div className='flex items-center gap-2'>
+                    <User className='w-4 h-4 text-green-600' />
+                    <div>
+                      <div className='font-medium text-sm'>{b.user.name}</div>
+                      <div className='text-xs text-gray-500'>
+                        {b.user.email}
+                      </div>
+                    </div>
+                  </div>
+                </TableCell>
+
                 <TableCell>
                   <div className='flex items-center gap-2'>
                     <MapPin className='w-4 h-4 text-blue-600' />
@@ -95,6 +147,7 @@ export function BookingHistoryTable({
                     </div>
                   </div>
                 </TableCell>
+
                 <TableCell>
                   <div className='text-sm'>
                     <div>
@@ -106,20 +159,81 @@ export function BookingHistoryTable({
                     </div>
                   </div>
                 </TableCell>
+
                 <TableCell>
                   <BookingStatusBadge status={b.status} />
                 </TableCell>
+
                 <TableCell>
                   <PaymentStatusBadge status={b.status_payment} />
                 </TableCell>
-                <TableCell>{formatPrice(String(b.total_price))}</TableCell>
+
                 <TableCell>
+                  {b.check_in ? (
+                    <div className='flex flex-col'>
+                      <div>
+                        {t('booking_list.check_in')}: {b.check_in}
+                      </div>
+                      <div>
+                        {t('booking_list.check_out')}: {b.check_out ?? '-'}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>-</div>
+                  )}
+                </TableCell>
+
+                <TableCell>{formatPrice(String(b.total_price))}</TableCell>
+
+                <TableCell className='flex items-center gap-2'>
                   <Button variant='outline' size='sm' asChild>
                     <Link to={`/bookings/${b.id}`}>
                       <Eye className='w-4 h-4 mr-1' />
-                      {t('booking_history.view')}
                     </Link>
                   </Button>
+
+                  <Button
+                    variant='outline'
+                    size='sm'
+                    disabled={
+                      checkInMutation.isPending || checkOutMutation.isPending
+                    }
+                    onClick={() =>
+                      b.check_in
+                        ? handleCheckout(String(b.id))
+                        : handleCheckin(String(b.id))
+                    }
+                  >
+                    {b.check_in ? (
+                      <LogOut className='w-4 h-4' />
+                    ) : (
+                      <LogIn className='w-4 h-4' />
+                    )}
+                  </Button>
+
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant='outline'
+                        size='sm'
+                        disabled={updateStatusMutation.isPending}
+                      >
+                        <MoreVertical className='w-4 h-4' />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {Object.entries(BOOKING_STATUS).map(([key, value]) => (
+                        <DropdownMenuItem
+                          key={key}
+                          onClick={() =>
+                            handleUpdateStatus(String(b.id), value)
+                          }
+                        >
+                          {t(`booking_status.${value}`)}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </TableCell>
               </TableRow>
             ))

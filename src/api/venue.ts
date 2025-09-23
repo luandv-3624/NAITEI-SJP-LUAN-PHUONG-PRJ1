@@ -59,6 +59,14 @@ export async function updateVenue({
   return data;
 }
 
+export async function getVenuesOM(
+  params: VenueFilterParams,
+): Promise<VenueListResponse> {
+  const { data } = await axios.get(`${VENUE_ENDPOINT}/me`, { params });
+
+  return data.data;
+}
+
 export async function updateStatusVenue({
   venueId,
   status,

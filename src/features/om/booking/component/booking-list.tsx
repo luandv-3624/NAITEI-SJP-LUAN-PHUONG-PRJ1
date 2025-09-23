@@ -4,10 +4,13 @@ import {
   BookingFilterParams,
   BookingHistoryPagination,
 } from '@/features/booking';
-import { BookingHistoryFilter } from '@/features/booking';
-import { BookingHistoryTable } from '@/features/booking';
+import {
+  BookingListFilter,
+  BookingListTable,
+  BookingListStatistic,
+} from '@/features/om/booking';
 import { useDebounce, usePagination } from '@/hooks';
-import { useGetBookingMe } from '@/features/booking';
+import { useGetBookingListOM } from '@/features/om/booking';
 import { useTranslation } from 'react-i18next';
 import { PageSize } from '@/constants';
 
@@ -15,7 +18,7 @@ export const FILTER_VALUES = {
   ALL: 'all',
 } as const;
 
-export function BookingHistory() {
+export function BookingList() {
   const { t } = useTranslation('booking');
   const {
     page: currentPage,
@@ -24,10 +27,13 @@ export function BookingHistory() {
     setPageSize,
   } = usePagination();
 
-  const [filters, setFilters] = useState<BookingFilterParams>({
+  const [filters, setFilters] = useState<
+    BookingFilterParams & { venueId?: string }
+  >({
     page: currentPage,
     pageSize: pageSize,
     search: '',
+    venueId: '',
     status: FILTER_VALUES.ALL,
     statusPayment: FILTER_VALUES.ALL,
     startTime: '',
@@ -38,9 +44,10 @@ export function BookingHistory() {
 
   const debouncedSearch = useDebounce(filters.search, 500);
 
-  const params: BookingFilterParams = {
+  const params: BookingFilterParams & { venueId?: string } = {
     page: currentPage,
     pageSize,
+    venueId: filters.venueId || undefined,
     status: filters.status !== FILTER_VALUES.ALL ? filters.status : undefined,
     statusPayment:
       filters.statusPayment !== FILTER_VALUES.ALL
@@ -53,7 +60,7 @@ export function BookingHistory() {
     sortOrder: filters.sortOrder,
   };
 
-  const { data, isPending, isFetching } = useGetBookingMe(params);
+  const { data, isPending, isFetching } = useGetBookingListOM(params);
 
   const bookings = data?.data || [];
   const totalRecords = data?.meta?.total || 0;
@@ -67,14 +74,12 @@ export function BookingHistory() {
   return (
     <div className='min-h-screen p-4 md:p-6'>
       <div className='max-w-7xl mx-auto'>
-        <h1 className='text-3xl font-bold mb-6'>
-          {t('booking_history.title')}
-        </h1>
+        <BookingListStatistic bookings={bookings} />
 
         <Card className='mb-6'>
           <CardHeader></CardHeader>
           <CardContent>
-            <BookingHistoryFilter
+            <BookingListFilter
               filters={filters}
               onFilterChange={handleFilterChange}
             />
@@ -84,11 +89,11 @@ export function BookingHistory() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {t('booking_history.yourBookings', { total: totalRecords })}
+              {t('booking_list.bookings', { total: totalRecords })}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <BookingHistoryTable
+            <BookingListTable
               bookings={bookings}
               isPending={isPending}
               isFetching={isFetching}
