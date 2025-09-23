@@ -24,5 +24,11 @@
   "previous": "Trang trước",
   "next": "Trang sau",
   "dashboard": "Bảng điều khiển",
-  "home": "Trang chủ"
+  "home": "Trang chủ",
+  "an_error_occured": "Đã xảy ra lỗi",
+  "not_found": "Không tìm thấy",
+  "empty": "Trống",
+  "venues": "Địa điểm",
+  "create_venue": "Tạo địa điểm",
+  "my_venues": "Địa điểm của tôi"
 }

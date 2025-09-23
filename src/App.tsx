@@ -9,7 +9,13 @@ import {
   SignUpSuccess,
   VerifyAccount,
 } from './pages';
-import { AuthLayout, MainLayout, SignInOutLayout } from './layouts';
+import {
+  AdminLayout,
+  AuthLayout,
+  MainLayout,
+  OMLayout,
+  SignInOutLayout,
+} from './layouts';
 import { useThemeEffect } from './features/theme';
 import {
   VenueDetailPage,
@@ -19,7 +25,7 @@ import {
 } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
-import AdminLayout from './layouts/AdminLayout';
+import { CreateVenue, ManageVenue, MyVenues, UpdateVenue } from './pages/om';
 
 function App() {
   useThemeEffect();
@@ -57,6 +63,12 @@ function App() {
         <Route path='/dashboard'>
           <Route path='admin' element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
+          </Route>
+          <Route path='om' element={<OMLayout />}>
+            <Route path='venues' element={<MyVenues />} />
+            <Route path='venues/:venueId' element={<ManageVenue />} />
+            <Route path='venues/:venueId/update' element={<UpdateVenue />} />
+            <Route path='create-venue' element={<CreateVenue />} />
           </Route>
         </Route>
       </Routes>

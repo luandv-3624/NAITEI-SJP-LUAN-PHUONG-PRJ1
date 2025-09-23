@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Link, useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 type Submenu = {
   href: string;
@@ -52,6 +53,7 @@ export function CollapseMenuButton({
       : submenu.active,
   );
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive);
+  const { t } = useTranslation('common');
 
   return isOpen ? (
     <Collapsible
@@ -80,7 +82,7 @@ export function CollapseMenuButton({
                     : '-translate-x-96 opacity-0',
                 )}
               >
-                {label}
+                {t(label)}
               </p>
             </div>
             <div
@@ -123,7 +125,7 @@ export function CollapseMenuButton({
                     : '-translate-x-96 opacity-0',
                 )}
               >
-                {label}
+                {t(label)}
               </p>
             </Link>
           </Button>
@@ -151,7 +153,7 @@ export function CollapseMenuButton({
                         isOpen === false ? 'opacity-0' : 'opacity-100',
                       )}
                     >
-                      {label}
+                      {t(label)}
                     </p>
                   </div>
                 </div>
@@ -159,13 +161,13 @@ export function CollapseMenuButton({
             </DropdownMenuTrigger>
           </TooltipTrigger>
           <TooltipContent side='right' align='start' alignOffset={2}>
-            {label}
+            {t(label)}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <DropdownMenuContent side='right' sideOffset={25} align='start'>
         <DropdownMenuLabel className='max-w-[190px] truncate'>
-          {label}
+          {t(label)}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {submenus.map(({ href, label, active }, index) => (
@@ -178,7 +180,7 @@ export function CollapseMenuButton({
               }`}
               to={href}
             >
-              <p className='max-w-[180px] truncate'>{label}</p>
+              <p className='max-w-[180px] truncate'>{t(label)}</p>
             </Link>
           </DropdownMenuItem>
         ))}

@@ -24,5 +24,11 @@
   "previous": "Previous",
   "next": "Next",
   "dashboard": "Dashboard",
-  "home": "Home"
+  "home": "Home",
+  "an_error_occured": "An error occurred",
+  "not_found": "Not Found",
+  "empty": "Empty",
+  "venues": "Venues",
+  "create_venue": "Create Venue",
+  "my_venues": "My Venues"
 }
