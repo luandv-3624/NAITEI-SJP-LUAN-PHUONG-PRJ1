@@ -12,3 +12,5 @@ export { BookingHistorySpaceInfoCard } from './booking-history-space-info-card';
 export { BookingHistoryPaymentInfoCard } from './booking-history-payment-info-card';
 export { BookingStatusBadge } from './booking-status-badge';
 export { PaymentStatusBadge } from './payment-status-badge';
+export { BookingDetailLayout } from './booking-detail';
+export { BookingHistoryDetailActions } from './booking-history-detail-action';

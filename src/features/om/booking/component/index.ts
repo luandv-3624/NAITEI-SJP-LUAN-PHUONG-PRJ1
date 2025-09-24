@@ -3,3 +3,7 @@ export { BookingListTable } from './booking-list-table';
 export { BookingListFilter } from './booking-list-filter';
 export { BookingListStatistic } from './booking-list-statistic';
 export { VenueFilter } from './venue-filter';
+export { CheckInOutButton } from './check-in-out-button';
+export { UpdateStatusButton } from './update-status-button';
+export { BookingDetailActions } from './booking-detail-action';
+export { BookingDetail } from './booking-detail';

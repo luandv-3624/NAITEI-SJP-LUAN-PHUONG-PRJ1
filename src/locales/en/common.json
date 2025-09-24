@@ -13,7 +13,9 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
-    "profile": "Profile"
+    "profile": "Profile",
+    "amdin": "Dashboard Admin",
+    "om": "Dashboard OM"
   },
   "header": {
     "booking-history": "Booking history"
@@ -35,6 +37,8 @@
   "bookings": "Bookings",
   "booking_list": "Booking List",
   "om": {
-    "venue_list": "Venue List"
+    "venue_list": "Venue List",
+    "booking_list": "Booking List",
+    "booking_detail": "Booking Detail"
   }
 }

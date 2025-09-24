@@ -13,7 +13,9 @@
     "login": "Đăng nhập",
     "register": "Đăng ký",
     "logout": "Đăng xuất",
-    "profile": "Hồ sơ"
+    "profile": "Hồ sơ",
+    "amdin": "Quản trị hệ thống",
+    "om": "Quản lý OM"
   },
   "header": {
     "booking-history": "Lịch sử đặt phòng"
@@ -35,6 +37,8 @@
   "bookings": "Đặt chỗ",
   "booking_list": "Danh sách đặt chỗ",
   "om": {
-    "venue_list": "Danh sách địa điểm"
+    "venue_list": "Danh sách địa điểm",
+    "booking_list": "Danh sách đặt chỗ",
+    "booking_detail": "Chi tiết đặt phòng"
   }
 }
