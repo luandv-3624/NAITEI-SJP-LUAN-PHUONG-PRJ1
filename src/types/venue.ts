@@ -14,4 +14,5 @@ export type Venue = {
   ward: Ward;
   spaces: Space[];
   owner: User;
+  managers: User[];
 };

@@ -80,3 +80,17 @@ export async function updateStatusVenue({
 
   return data;
 }
+
+export async function addManagers({
+  venueId,
+  userIds,
+}: {
+  venueId: string;
+  userIds: number[];
+}): Promise<Response<void>> {
+  const { data } = await axios.post(`${VENUE_ENDPOINT}/${venueId}/managers`, {
+    user_ids: userIds,
+  });
+
+  return data;
+}

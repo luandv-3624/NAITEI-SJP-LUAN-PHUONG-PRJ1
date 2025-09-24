@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router';
-import { Edit, MapPin } from 'lucide-react';
+import { ChevronsRight, Edit, MapPin } from 'lucide-react';
 import { useGetProfile } from '@/features/auth';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SpinLoading } from '@/components/spin-loading';
@@ -12,6 +12,9 @@ import { AxiosError } from '@/types';
 import { NotFound } from '@/components/not-found';
 import { GeneralError } from '@/components/general-error';
 import { HTTP_STATUS_CODE } from '@/constants';
+import { AddManagersDialog } from './add-managers-dialog';
+import { ManagersFront } from './managers-front';
+import { MdSpaceDashboard } from 'react-icons/md';
 
 export function ManageVenue({ venueId }: { venueId: string }) {
   const { data: venue, isPending, isError, error } = useGetVenueDetail(venueId);
@@ -91,10 +94,28 @@ export function ManageVenue({ venueId }: { venueId: string }) {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>{t('managers')}</CardTitle>
+            <CardTitle className='flex justify-between'>
+              <span>{t('managers')}</span>
+              {venue.owner_id === user?.id && (
+                <AddManagersDialog
+                  venueId={venueId}
+                  defaultUserIds={venue.managers.map((manager) => manager.id)}
+                  excludeUserIds={[venue.owner_id]}
+                />
+              )}
+            </CardTitle>
           </CardHeader>
-          <CardContent className='text-sm'>太陽目指す</CardContent>
+          <CardContent>
+            <ManagersFront managers={venue.managers} />
+          </CardContent>
         </Card>
+      </div>
+      <div className='flex justify-end'>
+        <Button asChild variant='link'>
+          <Link to={`/dashboard/om/venues/${venueId}/spaces`}>
+            <MdSpaceDashboard /> {t('manage_spaces')} <ChevronsRight />
+          </Link>
+        </Button>
       </div>
     </section>
   );

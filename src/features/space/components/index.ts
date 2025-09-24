@@ -5,3 +5,6 @@ export { InfoCard } from './info-card';
 export { ContactItem } from './contact-item';
 export { AmenityItem } from './amenity-item';
 export { Filters } from './filters';
+export { List, SpaceDetail as SpaceDetailDashboard } from './spaces-by-venue';
+export { CreateSpace } from './create-space';
+export { UpdateSpace } from './update-space';
