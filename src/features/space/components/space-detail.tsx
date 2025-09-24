@@ -143,7 +143,10 @@ export function SpaceDetail({ space }: { space: Space }) {
                 space?.images.map((image, index) => (
                   <CarouselItem key={index}>
                     <img
-                      src={image}
+                      src={
+                        image ||
+                        'https://tiktak.com.vn/wp-content/uploads/2025/08/Asset-5.png'
+                      }
                       loading='lazy'
                       className='w-full h-[400px] object-cover'
                       alt={`${space.name} - Ảnh ${index + 1}`}
@@ -152,9 +155,14 @@ export function SpaceDetail({ space }: { space: Space }) {
                 ))
               ) : (
                 <CarouselItem>
-                  <div className='w-full h-[400px] flex items-center justify-center'>
-                    <span>{t('no_images')}</span>
-                  </div>
+                  <img
+                    src={
+                      'https://workiq.ie/wp-content/uploads/2025/08/coworking-paralax.jpg'
+                    }
+                    loading='lazy'
+                    className='w-full h-[400px] object-cover'
+                    alt={`${space.name}`}
+                  />
                 </CarouselItem>
               )}
             </CarouselContent>

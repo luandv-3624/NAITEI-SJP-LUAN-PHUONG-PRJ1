@@ -35,6 +35,14 @@ export async function getProfile(): Promise<User> {
   return data.data;
 }
 
+export async function updateProfile(payload: {
+  name?: string;
+  phone_number?: string;
+}): Promise<Response<User>> {
+  const { data } = await axios.put(PROFILE_ENDPOINT, payload);
+  return data;
+}
+
 export async function forgotPassword({
   email,
 }: {

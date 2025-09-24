@@ -1,0 +1,28 @@
+{
+  "title": "Quản lý hồ sơ",
+  "edit_profile": "Chỉnh sửa hồ sơ",
+  "profile_information": "Thông tin hồ sơ",
+  "save_changes": "Lưu thay đổi",
+  "cancel": "Hủy",
+  "email_readonly": "Email này không thể thay đổi",
+  "verified": "Đã xác minh",
+  "unverified": "Chưa xác minh",
+  "account_info": "Thông tin tài khoản",
+  "account_id": "Mã tài khoản",
+  "account_status": "Trạng thái tài khoản",
+  "email_verified_at": "Email xác minh lúc",
+  "fields": {
+    "name": "Họ và tên",
+    "email": "Email",
+    "phone_number": "Số điện thoại",
+    "role": "Vai trò"
+  },
+  "status": {
+    "active": "Đang hoạt động",
+    "inactive": "Ngưng hoạt động",
+    "verified": "Đã xác minh"
+  },
+  "error": {
+    "fetch_failed": "Không thể tải dữ liệu hồ sơ. Vui lòng thử lại."
+  }
+}
