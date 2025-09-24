@@ -16,6 +16,8 @@ import BOOKING_EN from './locales/en/booking.json';
 import BOOKING_VI from './locales/vi/booking.json';
 import ADDRESS_EN from './locales/en/address.json';
 import ADDRESS_VI from './locales/vi/address.json';
+import USER_EN from './locales/en/user.json';
+import USER_VI from './locales/vi/user.json';
 
 const resources = {
   en: {
@@ -26,6 +28,7 @@ const resources = {
     space: SPACE_EN,
     booking: BOOKING_EN,
     address: ADDRESS_EN,
+    user: USER_EN,
   },
   vi: {
     theme: THEME_VI,
@@ -35,6 +38,7 @@ const resources = {
     space: SPACE_VI,
     booking: BOOKING_VI,
     address: ADDRESS_VI,
+    user: USER_VI,
   },
 };
 
