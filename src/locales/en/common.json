@@ -32,6 +32,8 @@
   "create_venue": "Create Venue",
   "my_venues": "My Venues",
   "venue_list": "Venue List",
+  "bookings": "Bookings",
+  "booking_list": "Booking List",
   "om": {
     "venue_list": "Venue List"
   }

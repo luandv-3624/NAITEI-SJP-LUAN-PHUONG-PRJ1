@@ -32,6 +32,8 @@
   "create_venue": "Tạo địa điểm",
   "my_venues": "Địa điểm của tôi",
   "venue_list": "Danh sách địa điểm",
+  "bookings": "Đặt chỗ",
+  "booking_list": "Danh sách đặt chỗ",
   "om": {
     "venue_list": "Danh sách địa điểm"
   }

@@ -38,6 +38,18 @@
     "end": "End",
     "view": "View"
   },
+  "booking_list": {
+    "title": "Booking List",
+    "table": {
+      "customer": "Customer",
+      "check": "Check"
+    },
+    "bookings": "Bookings ({{total}})",
+    "not_venues": "No venues found.",
+    "all_venues": "All venues",
+    "check_in": "Check in",
+    "check_out": "Check out"
+  },
   "filter": {
     "search": "Search",
     "search_placeholder": "Search by space name...",
@@ -46,7 +58,8 @@
     "payment": "Payment",
     "all_payments": "All Payments",
     "start_date": "Start date",
-    "end_date": "End date"
+    "end_date": "End date",
+    "venue": "Venue"
   },
   "back_list": "Back to booking list",
   "title_detail": "Booking detail #{{id}}",

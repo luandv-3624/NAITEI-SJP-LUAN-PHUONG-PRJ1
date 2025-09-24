@@ -23,6 +23,7 @@ import {
   BookingHistoryPage,
   BookingHistoryDetailPage,
   VenueListPage,
+  BookingListPage,
 } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
@@ -71,6 +72,7 @@ function App() {
             <Route path='venues/:venueId' element={<ManageVenue />} />
             <Route path='venues/:venueId/update' element={<UpdateVenue />} />
             <Route path='create-venue' element={<CreateVenue />} />
+            <Route path='bookings' element={<BookingListPage />} />
           </Route>
         </Route>
       </Routes>

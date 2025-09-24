@@ -1,5 +1,10 @@
 import { MenuLayout } from '@/types/menu-layout';
-import { Building, LayoutGrid, LucideIcon } from 'lucide-react';
+import {
+  Building,
+  LayoutGrid,
+  LucideIcon,
+  ChartColumnDecreasing,
+} from 'lucide-react';
 
 type Submenu = {
   href: string;
@@ -58,6 +63,17 @@ export function getMenuList(layout: MenuLayout): Group[] {
                 {
                   href: '/dashboard/om/create-venue',
                   label: 'create_venue',
+                },
+              ],
+            },
+            {
+              href: '',
+              icon: ChartColumnDecreasing,
+              label: 'bookings',
+              submenus: [
+                {
+                  href: '/dashboard/om/bookings',
+                  label: 'booking_list',
                 },
               ],
             },
