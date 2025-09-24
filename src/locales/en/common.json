@@ -30,5 +30,9 @@
   "empty": "Empty",
   "venues": "Venues",
   "create_venue": "Create Venue",
-  "my_venues": "My Venues"
+  "my_venues": "My Venues",
+  "venue_list": "Venue List",
+  "om": {
+    "venue_list": "Venue List"
+  }
 }

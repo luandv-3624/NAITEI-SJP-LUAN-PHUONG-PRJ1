@@ -134,7 +134,7 @@ export function SpaceDetail({ space }: { space: Space }) {
   };
 
   return (
-    <div className='bg-gray-50 min-h-screen'>
+    <div className='min-h-screen'>
       <div className='max-w-7xl mx-auto px-4 md:px-8 mt-6'>
         <div className='relative w-full h-[400px] rounded-2xl overflow-hidden'>
           <Carousel className='w-full h-full'>
@@ -152,8 +152,8 @@ export function SpaceDetail({ space }: { space: Space }) {
                 ))
               ) : (
                 <CarouselItem>
-                  <div className='w-full h-[400px] bg-gray-200 flex items-center justify-center'>
-                    <span className='text-gray-500'>{t('no_images')}</span>
+                  <div className='w-full h-[400px] flex items-center justify-center'>
+                    <span>{t('no_images')}</span>
                   </div>
                 </CarouselItem>
               )}
@@ -170,13 +170,11 @@ export function SpaceDetail({ space }: { space: Space }) {
             <div className='flex flex-col md:flex-row md:justify-between md:items-start gap-4'>
               <div className='flex-1'>
                 <div className='flex items-center gap-3 mb-3'>
-                  <h1 className='text-3xl font-bold text-gray-900'>
-                    {space.name}
-                  </h1>
+                  <h1 className='text-3xl font-bold'>{space.name}</h1>
                   {getStatusBadge(space.status)}
                 </div>
 
-                <div className='flex items-center gap-4 text-gray-600 mb-4'>
+                <div className='flex items-center gap-4 mb-4'>
                   <div className='flex items-center gap-2'>
                     <Users className='w-5 h-5' />
                     <span>{space.capacity} người</span>
@@ -193,7 +191,7 @@ export function SpaceDetail({ space }: { space: Space }) {
                   <span>{space.venue.address}</span>
                 </div>
 
-                <div className='flex items-center gap-2 text-gray-600 mt-2'>
+                <div className='flex items-center gap-2 mt-2'>
                   <Store className='w-4 h-4' />
                   <span>T2-T6 8:00 - 17:00</span>
                 </div>
@@ -204,13 +202,11 @@ export function SpaceDetail({ space }: { space: Space }) {
                   <div className='text-3xl font-bold text-blue-600 mb-1'>
                     {parseInt(space.price).toLocaleString()}₫
                   </div>
-                  <div className='text-gray-600 mb-4'>
-                    /{space.price_type.name}
-                  </div>
+                  <div className='mb-4'>/{space.price_type.name}</div>
                   <Button className='w-full bg-blue-600 hover:bg-blue-700 mb-3'>
                     {t('booking.reserve_now')}
                   </Button>
-                  <Button variant='outline' className='w-full'>
+                  <Button className='w-full'>
                     {t('booking.check_availability')}
                   </Button>
                 </div>
@@ -220,7 +216,7 @@ export function SpaceDetail({ space }: { space: Space }) {
 
           <div
             ref={tabRef}
-            className='sticky top-16 z-10 bg-white rounded-lg shadow-sm mb-8 border'
+            className='sticky top-16 z-10 bg-background rounded-lg shadow-sm mb-8 border'
           >
             <Tabs value={activeTab} onValueChange={handleTabChange}>
               <TabsList className='w-full bg-transparent border-0 p-0 h-auto'>
@@ -250,7 +246,7 @@ export function SpaceDetail({ space }: { space: Space }) {
 
           <Card id='amenities-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6'>
-              <h2 className='text-2xl font-bold mb-6 text-gray-900'>
+              <h2 className='text-2xl font-bold mb-6'>
                 {t('amenities.title')}
               </h2>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
@@ -273,7 +269,7 @@ export function SpaceDetail({ space }: { space: Space }) {
 
           <Card id='booking-section' className='mb-8 border-0 shadow-sm'>
             <div className='p-6'>
-              <h2 className='text-2xl font-bold mb-6 text-gray-900'>
+              <h2 className='text-2xl font-bold mb-6'>
                 {t('booking.important_notice')}
               </h2>
               <div className='bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6'>

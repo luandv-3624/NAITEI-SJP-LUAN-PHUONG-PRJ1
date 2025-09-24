@@ -44,6 +44,10 @@
     "approved": "Approved",
     "available": "Available"
   },
+  "all": "All",
+  "approved": "Approved",
+  "pending": "Pending",
+  "blocked": "Blocked",
   "error": "Error loading venue details.",
   "notFound": "Venue not found.",
   "owner": "Owner",
@@ -51,9 +55,6 @@
   "manage": "Manage",
   "no_venue": "No venue",
   "my_venues": "My Venues",
-  "pending": "Pending",
-  "approved": "Approved",
-  "blocked": "Blocked",
   "new": "New",
   "create_venue": "Create Venue",
   "edit": "Edit",
@@ -76,5 +77,38 @@
   "lat_invalid": "Latitude must be a valid number",
   "lat_range": "Latitude must be between -90 and 90",
   "lng_invalid": "Longitude must be a valid number",
-  "lng_range": "Longitude must be between -180 and 180"
+  "lng_range": "Longitude must be between -180 and 180",
+  "venue_list": {
+    "title": "Venue List",
+    "filter_title": "Filter Venues",
+    "total_venues": "Total Venues: {{total}}"
+  },
+  "filter": {
+    "venue_name": "Venue Name",
+    "search_venue_placeholder": "Search by venue name...",
+    "address": "Address",
+    "search_address_placeholder": "Search by address...",
+    "status": "Status",
+    "all_status": "All",
+    "sort_by": "Sort By",
+    "sort_by_placeholder": "Select sort option..."
+  },
+  "table": {
+    "id": "ID",
+    "venue_info": "Venue Info",
+    "location": "Location",
+    "owner": "Owner",
+    "managers": "Managers",
+    "status": "Status",
+    "actions": "Actions",
+    "created_at": "Created At"
+  },
+  "rows_per_page": "Rows per page",
+  "view": "View",
+  "no_venues": "No venues found.",
+  "sort": {
+    "created_at": "Created At",
+    "name": "Name",
+    "status": "Status"
+  }
 }

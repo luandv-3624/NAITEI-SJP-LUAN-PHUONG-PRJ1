@@ -30,5 +30,9 @@
   "empty": "Trống",
   "venues": "Địa điểm",
   "create_venue": "Tạo địa điểm",
-  "my_venues": "Địa điểm của tôi"
+  "my_venues": "Địa điểm của tôi",
+  "venue_list": "Danh sách địa điểm",
+  "om": {
+    "venue_list": "Danh sách địa điểm"
+  }
 }
