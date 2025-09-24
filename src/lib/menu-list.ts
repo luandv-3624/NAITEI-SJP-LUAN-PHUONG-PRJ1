@@ -3,6 +3,7 @@ import {
   Building,
   LayoutGrid,
   LucideIcon,
+  Users,
   ChartColumnDecreasing,
 } from 'lucide-react';
 
@@ -33,7 +34,7 @@ export function getMenuList(layout: MenuLayout): Group[] {
           groupLabel: '',
           menus: [
             {
-              href: '/dashboard/admin',
+              href: '/dashboard/admin/stats',
               label: 'dashboard',
               icon: LayoutGrid,
               submenus: [
@@ -42,6 +43,12 @@ export function getMenuList(layout: MenuLayout): Group[] {
                   label: 'venue_list',
                 },
               ],
+            },
+            {
+              href: '/dashboard/admin/users',
+              label: 'users',
+              icon: Users,
+              submenus: [],
             },
           ],
         },

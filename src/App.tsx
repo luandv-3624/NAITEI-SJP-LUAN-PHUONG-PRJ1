@@ -7,6 +7,7 @@ import {
   SignIn,
   SignUp,
   SignUpSuccess,
+  UsersPage,
   VerifyAccount,
 } from './pages';
 import {
@@ -74,8 +75,9 @@ function App() {
         </Route>
         <Route path='/dashboard'>
           <Route path='admin' element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
+            <Route index path='stats' element={<Dashboard />} />
             <Route path='venues' element={<VenueListPage />} />
+            <Route path='users' element={<UsersPage />} />
           </Route>
           <Route path='om' element={<OMLayout />}>
             <Route path='venues' element={<MyVenues />} />
