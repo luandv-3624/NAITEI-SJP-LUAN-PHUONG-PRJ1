@@ -6,5 +6,7 @@ export * from './client';
 export { VerifyAccount } from './VerifyAccount';
 export { ForgotPassword } from './ForgotPassword';
 export { ResetPassword } from './ResetPassowrd';
+export { GoogleCallback } from './GoogleCallback';
+export { NotFoundPage } from './NotFound';
 export * from './admin';
 export * from './om';
