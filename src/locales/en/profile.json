@@ -1,0 +1,28 @@
+{
+  "title": "Profile Management",
+  "edit_profile": "Edit Profile",
+  "profile_information": "Profile Information",
+  "save_changes": "Save Changes",
+  "cancel": "Cancel",
+  "email_readonly": "This email cannot be changed",
+  "verified": "Verified",
+  "unverified": "Unverified",
+  "account_info": "Account Information",
+  "account_id": "Account ID",
+  "account_status": "Account Status",
+  "email_verified_at": "Email Verified At",
+  "fields": {
+    "name": "Full Name",
+    "email": "Email",
+    "phone_number": "Phone Number",
+    "role": "Role"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "verified": "Verified"
+  },
+  "error": {
+    "fetch_failed": "Failed to fetch profile data. Please try again."
+  }
+}

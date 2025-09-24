@@ -26,6 +26,7 @@ import {
   VenueListPage,
   BookingListPage,
   BookingDetailPage,
+  ProfilePage,
 } from './pages';
 import './i18n';
 import { useGetProfile, useSilentRefresh } from './features/auth';
@@ -55,6 +56,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />} />
+          <Route path='/profile' element={<ProfilePage />} />
           <Route path='/venues/:venueId' element={<VenueDetailPage />} />
           <Route path='/spaces/:spaceId' element={<SpaceDetailPage />} />
           <Route path='/bookings' element={<BookingHistoryPage />} />

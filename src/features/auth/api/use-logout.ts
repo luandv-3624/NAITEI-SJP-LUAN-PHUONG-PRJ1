@@ -1,6 +1,7 @@
 import { logout } from '@/api/auth';
 import { AxiosError } from '@/types';
 import { useMutation } from '@tanstack/react-query';
+import { queryClient } from '@/api/query-client';
 import { toast } from 'sonner';
 import { useSetAtom } from 'jotai';
 import { tokenService } from '@/api/token-service';
@@ -16,6 +17,7 @@ export function useLogout() {
       localStorage.removeItem('refreshToken');
 
       setIsLogin(false);
+      queryClient.clear();
     },
     onError: (error: AxiosError) => {
       toast(error.response?.data.message);
