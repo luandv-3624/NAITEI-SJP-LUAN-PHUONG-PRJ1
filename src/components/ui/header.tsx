@@ -4,22 +4,18 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { UserMenu } from '@/components/ui/user-menu';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ThemeToggle } from '@/features/theme/components/theme-toggle';
 import { LangSelector } from '@/features/locale/components/lang-selector';
 import { useTranslation } from 'react-i18next';
 import { isLoginAtom } from '@/features/auth';
+import { useGetProfile } from '@/features/auth';
 import { useAtomValue } from 'jotai';
 
 export function Header() {
   const isLoggedIn = useAtomValue(isLoginAtom);
+  const { data: user } = useGetProfile();
   const { t } = useTranslation('common');
 
   const menuItems = [
@@ -66,32 +62,11 @@ export function Header() {
       </div>
 
       <div className='flex items-center gap-4'>
-        <ThemeToggle />
         <LangSelector />
+        <ThemeToggle />
 
         {isLoggedIn ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Avatar className='cursor-pointer ring-2 ring-indigo-200'>
-                <AvatarImage
-                  src='https://ca.slack-edge.com/E028JVBUY4F-U06PMNCPVPT-9c2f971890ca-512'
-                  alt='User'
-                />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end'>
-              <DropdownMenuItem>
-                <NavLink to='/profile'>{t('auth.profile')}</NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <NavLink to='/bookings'>{t('header.booking-history')}</NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {}}>
-                {t('auth.logout')}
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserMenu user={user} />
         ) : (
           <div className='flex gap-2'>
             <Button variant='outline'>{t('auth.register')}</Button>

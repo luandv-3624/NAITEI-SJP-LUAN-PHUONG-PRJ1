@@ -119,5 +119,6 @@
   "not_found": "Booking not found",
   "error": {
     "fetch_failed": "Failed to fetch booking data. Please try again later."
-  }
+  },
+  "update_booking_status": "Update booking status"
 }

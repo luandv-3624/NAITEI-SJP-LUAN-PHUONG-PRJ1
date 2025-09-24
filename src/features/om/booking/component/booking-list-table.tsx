@@ -8,34 +8,14 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Eye,
-  MapPin,
-  User,
-  Users,
-  Calendar,
-  LogOut,
-  LogIn,
-  MoreVertical,
-} from 'lucide-react';
+import { Eye, MapPin, User, Users, Calendar } from 'lucide-react';
 import { BookingStatusBadge, PaymentStatusBadge } from '@/features/booking';
 import { useTranslation } from 'react-i18next';
 import { Booking } from '@/types';
 import { formatPrice } from '@/lib';
 import { useDateTimeFormatter } from '@/features/booking';
 import { Link } from 'react-router';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from '@/components/ui/dropdown-menu';
-import { BOOKING_STATUS, BookingStatus } from '@/constants';
-import {
-  useCheckin,
-  useCheckout,
-  useUpdateStatus,
-} from '@/features/om/booking';
+import { CheckInOutButton, UpdateStatusButton } from '@/features/om/booking';
 
 interface BookingListTableProps {
   bookings: Booking[];
@@ -53,22 +33,6 @@ export function BookingListTable({
 
   const isInitialLoading = isPending && bookings.length === 0;
   const isUpdating = isFetching && !isInitialLoading;
-
-  const checkInMutation = useCheckin();
-  const checkOutMutation = useCheckout();
-  const updateStatusMutation = useUpdateStatus();
-
-  const handleCheckin = (id: string) => {
-    checkInMutation.mutate(id);
-  };
-
-  const handleCheckout = (id: string) => {
-    checkOutMutation.mutate(id);
-  };
-
-  const handleUpdateStatus = (id: string, status: BookingStatus) => {
-    updateStatusMutation.mutate({ bookingId: id, status });
-  };
 
   return (
     <div className='relative overflow-x-auto'>
@@ -187,53 +151,15 @@ export function BookingListTable({
 
                 <TableCell className='flex items-center gap-2'>
                   <Button variant='outline' size='sm' asChild>
-                    <Link to={`/bookings/${b.id}`}>
+                    <Link to={`/dashboard/om/bookings/${b.id}`}>
                       <Eye className='w-4 h-4 mr-1' />
                     </Link>
                   </Button>
-
-                  <Button
-                    variant='outline'
-                    size='sm'
-                    disabled={
-                      checkInMutation.isPending || checkOutMutation.isPending
-                    }
-                    onClick={() =>
-                      b.check_in
-                        ? handleCheckout(String(b.id))
-                        : handleCheckin(String(b.id))
-                    }
-                  >
-                    {b.check_in ? (
-                      <LogOut className='w-4 h-4' />
-                    ) : (
-                      <LogIn className='w-4 h-4' />
-                    )}
-                  </Button>
-
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        disabled={updateStatusMutation.isPending}
-                      >
-                        <MoreVertical className='w-4 h-4' />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      {Object.entries(BOOKING_STATUS).map(([key, value]) => (
-                        <DropdownMenuItem
-                          key={key}
-                          onClick={() =>
-                            handleUpdateStatus(String(b.id), value)
-                          }
-                        >
-                          {t(`booking_status.${value}`)}
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <CheckInOutButton
+                    bookingId={String(b.id)}
+                    checkedIn={!!b.check_in}
+                  />
+                  <UpdateStatusButton bookingId={String(b.id)} />
                 </TableCell>
               </TableRow>
             ))

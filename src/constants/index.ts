@@ -5,3 +5,4 @@ export * from './space-status';
 export * from './pagination';
 export * from './payment-method';
 export * from './venue-status';
+export * from './payment-status';

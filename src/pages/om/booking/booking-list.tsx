@@ -7,7 +7,7 @@ export function BookingListPage() {
   const { t } = useTranslation('common');
 
   return (
-    <ContentLayout menuLayout={MenuLayout.OWNER} title={t('om.venue_list')}>
+    <ContentLayout menuLayout={MenuLayout.OWNER} title={t('om.booking_list')}>
       <BookingList />
     </ContentLayout>
   );

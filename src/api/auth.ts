@@ -1,6 +1,6 @@
 import type { SignInDto, SignUpDto } from '@/features/auth';
 import { axios } from './axios';
-import { User } from '@/types';
+import { Response, User } from '@/types';
 
 const ENDPOINT = '/auth';
 const PROFILE_ENDPOINT = '/profile';
@@ -18,6 +18,12 @@ export async function signUp(signUpDto: SignUpDto): Promise<User> {
   const { data } = await axios.post(`${ENDPOINT}/signup`, signUpDto);
 
   return data.data.user;
+}
+
+export async function logout(): Promise<Response<[]>> {
+  const { data } = await axios.post(`${ENDPOINT}/logout`);
+
+  return data;
 }
 
 export async function verifyEmail({ token }: { token: string }): Promise<void> {

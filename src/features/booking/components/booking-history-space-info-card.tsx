@@ -1,22 +1,16 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Users, Eye, CreditCard, XCircle } from 'lucide-react';
+import { MapPin, Users, Eye } from 'lucide-react';
 import { Link } from 'react-router';
-import { BOOKING_PAYMENT_STATUS, BOOKING_STATUS } from '@/constants';
 import { Booking } from '@/types';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
   booking: Booking;
-  onShowPaymentModal: () => void;
-  onShowCancelModal: () => void;
+  renderActions?: React.ReactNode;
 }
 
-export function BookingHistorySpaceInfoCard({
-  booking,
-  onShowPaymentModal,
-  onShowCancelModal,
-}: Props) {
+export function BookingHistorySpaceInfoCard({ booking, renderActions }: Props) {
   const { t } = useTranslation('booking');
 
   return (
@@ -68,30 +62,7 @@ export function BookingHistorySpaceInfoCard({
                 </Link>
               </Button>
 
-              <div className='flex gap-2 ml-auto'>
-                {booking.status_payment !== BOOKING_PAYMENT_STATUS.PAID && (
-                  <Button
-                    size='sm'
-                    className='bg-blue-600 hover:bg-blue-700'
-                    onClick={onShowPaymentModal}
-                  >
-                    <CreditCard className='w-4 h-4 mr-2' />
-                    {t('btn_pay')}
-                  </Button>
-                )}
-
-                {(booking.status === BOOKING_STATUS.PENDING ||
-                  booking.status === BOOKING_STATUS.CONFIRMED_UNPAID) && (
-                  <Button
-                    variant='destructive'
-                    size='sm'
-                    onClick={onShowCancelModal}
-                  >
-                    <XCircle className='w-4 h-4 mr-2' />
-                    {t('btn_cancel')}
-                  </Button>
-                )}
-              </div>
+              <div className='flex gap-2 ml-auto'>{renderActions}</div>
             </div>
           </div>
         </div>

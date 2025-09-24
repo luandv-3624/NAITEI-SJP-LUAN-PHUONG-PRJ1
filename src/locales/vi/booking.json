@@ -119,5 +119,6 @@
   "not_found": "Không tìm thấy đặt chỗ",
   "error": {
     "fetch_failed": "Không thể tải dữ liệu đặt chỗ. Vui lòng thử lại sau."
-  }
+  },
+  "update_booking_status": "Cập nhật trạng thái"
 }
