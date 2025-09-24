@@ -69,3 +69,14 @@ export async function resetPassword({
     password_confirmation: confirmPassword,
   });
 }
+
+export async function loginWithGoogle(searchParams: URLSearchParams): Promise<{
+  access_token: string;
+  refresh_token: string;
+}> {
+  const { data } = await axios.get(`${ENDPOINT}/google/callback`, {
+    params: searchParams,
+  });
+
+  return data.data;
+}

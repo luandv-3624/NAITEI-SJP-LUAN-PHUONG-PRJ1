@@ -103,8 +103,11 @@ export function SignInForm() {
             type='button'
             className='w-full'
             disabled={isLoading}
+            asChild
           >
-            <FaGoogle />
+            <a href='/api/auth/google'>
+              <FaGoogle />
+            </a>
           </Button>
           <div className='text-center text-sm'>
             {t('dont_have_account')}{' '}

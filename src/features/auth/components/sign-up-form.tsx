@@ -146,8 +146,11 @@ export function SignUpForm() {
             type='button'
             className='w-full'
             disabled={isLoading}
+            asChild
           >
-            <FaGoogle />
+            <a href='/api/auth/google'>
+              <FaGoogle />
+            </a>
           </Button>
           <div className='text-center text-sm'>
             {t('already_have_account')}{' '}

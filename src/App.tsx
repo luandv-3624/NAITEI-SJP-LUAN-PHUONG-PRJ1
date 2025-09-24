@@ -2,7 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import {
   Dashboard,
   ForgotPassword,
+  GoogleCallback,
   Home,
+  NotFoundPage,
   ResetPassword,
   SignIn,
   SignUp,
@@ -74,6 +76,7 @@ function App() {
           <Route path='/verify-email' element={<VerifyAccount />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/google/callback' element={<GoogleCallback />} />
         </Route>
         <Route path='/dashboard'>
           <Route path='admin' element={<AdminLayout />}>
@@ -103,6 +106,7 @@ function App() {
             <Route path='bookings/:bookingId' element={<BookingDetailPage />} />
           </Route>
         </Route>
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
