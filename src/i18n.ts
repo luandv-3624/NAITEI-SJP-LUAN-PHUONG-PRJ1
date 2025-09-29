@@ -20,6 +20,8 @@ import USER_EN from './locales/en/user.json';
 import USER_VI from './locales/vi/user.json';
 import PROFILE_EN from './locales/en/profile.json';
 import PROFILE_VI from './locales/vi/profile.json';
+import NOTIFICATION_EN from './locales/en/notification.json';
+import NOTIFICATION_VI from './locales/vi/notification.json';
 
 const resources = {
   en: {
@@ -32,6 +34,7 @@ const resources = {
     address: ADDRESS_EN,
     user: USER_EN,
     profile: PROFILE_EN,
+    notification: NOTIFICATION_EN,
   },
   vi: {
     theme: THEME_VI,
@@ -43,6 +46,7 @@ const resources = {
     address: ADDRESS_VI,
     user: USER_VI,
     profile: PROFILE_VI,
+    notification: NOTIFICATION_VI,
   },
 };
 

@@ -3,7 +3,6 @@ import { updateStatus } from '@/api/booking';
 import { toast } from 'sonner';
 import { getQueryKey } from './use-get-booking-list';
 import { queryClient } from '@/api/query-client';
-import { BookingStatus } from '@/constants';
 
 export function useUpdateStatus() {
   const mutation = useMutation({
