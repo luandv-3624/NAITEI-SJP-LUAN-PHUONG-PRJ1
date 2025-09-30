@@ -13,6 +13,7 @@ export function useNotification() {
 
     const channel = echo.channel(`user.${user.id}`);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     channel.listen('NotificationCreated', (event: any) => {
       toast(event.title, {
         description: event.message,

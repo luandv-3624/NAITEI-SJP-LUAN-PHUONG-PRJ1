@@ -9,12 +9,17 @@
     "format": "prettier --write .",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,json,css,md}": "prettier --write"
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": "prettier --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

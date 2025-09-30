@@ -1,7 +1,7 @@
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
-(window as any).Pusher = Pusher;
+(window as typeof window & { Pusher: typeof Pusher }).Pusher = Pusher;
 
 export const echo = new Echo({
   broadcaster: 'pusher',

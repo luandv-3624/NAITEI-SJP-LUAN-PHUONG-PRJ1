@@ -6,8 +6,8 @@ import {
 } from '@/components/ui/navigation-menu';
 import { UserMenu } from '@/components/ui/user-menu';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/features/theme/components/theme-toggle';
-import { LangSelector } from '@/features/locale/components/lang-selector';
+import { ThemeToggle } from '@/features/theme';
+import { LangSelector } from '@/features/locale';
 import { useTranslation } from 'react-i18next';
 import { isLoginAtom } from '@/features/auth';
 import { useGetProfile } from '@/features/auth';

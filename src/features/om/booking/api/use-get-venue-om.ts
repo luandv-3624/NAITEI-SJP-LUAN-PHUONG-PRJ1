@@ -6,11 +6,11 @@ import { VenueFilterParams } from '@/features/om/venue';
 
 const QUERY_KEY = 'venues';
 
-export function getQueryKeyVenues(params?: VenueFilterParams) {
+export function getQueryKeyVenues(params?: Partial<VenueFilterParams>) {
   return params ? [QUERY_KEY, params] : [QUERY_KEY];
 }
 
-export function useGetVenuesOM(params: any) {
+export function useGetVenuesOM(params: Partial<VenueFilterParams>) {
   const isLogin = useAtomValue(isLoginAtom);
 
   return useQuery({

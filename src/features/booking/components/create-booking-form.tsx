@@ -46,7 +46,7 @@ export function CreateBookingForm({ space }: Props) {
         parseInt(space.price),
         space.price_type.code,
       ),
-    [startTime, endTime],
+    [startTime, endTime, space.price, space.price_type.code],
   );
 
   const createBooking = useCreateBooking();
