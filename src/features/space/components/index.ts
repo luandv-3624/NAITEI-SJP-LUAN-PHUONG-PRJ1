@@ -8,3 +8,4 @@ export { Filters } from './filters';
 export { List, SpaceDetail as SpaceDetailDashboard } from './spaces-by-venue';
 export { CreateSpace } from './create-space';
 export { UpdateSpace } from './update-space';
+export { SpaceCard } from './space-card';
