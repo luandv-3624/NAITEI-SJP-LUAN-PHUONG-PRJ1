@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { isLoginAtom } from '@/features/auth';
 import { useGetProfile } from '@/features/auth';
 import { useAtomValue } from 'jotai';
+import { Notification } from '@/features/notification';
 
 export function Header() {
   const isLoggedIn = useAtomValue(isLoginAtom);
@@ -62,6 +63,7 @@ export function Header() {
       </div>
 
       <div className='flex items-center gap-4'>
+        <Notification />
         <LangSelector />
         <ThemeToggle />
 
