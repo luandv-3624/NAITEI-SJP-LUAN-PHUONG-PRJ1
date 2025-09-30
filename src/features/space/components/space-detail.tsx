@@ -53,13 +53,13 @@ const mockReviews: Review[] = [
   },
 ];
 
+const sections = ['overview', 'amenities', 'booking'];
+
 export function SpaceDetail({ space }: { space: Space }) {
   const { t } = useTranslation('space');
 
   const [activeTab, setActiveTab] = useState('overview');
   const tabRef = useRef<HTMLDivElement | null>(null);
-
-  const sections = ['overview', 'amenities', 'booking'];
 
   const handleTabChange = (value: string) => {
     const el = document.getElementById(`${value}-section`);

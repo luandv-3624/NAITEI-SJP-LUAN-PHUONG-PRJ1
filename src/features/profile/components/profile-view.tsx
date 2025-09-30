@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Edit, Mail, Phone, User, Shield, CheckCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { User as U } from '../types/user';
-import { getStatusBadge } from './user-status-badge';
+import { StatusBadge } from './user-status-badge';
 
 interface ProfileViewProps {
   profile: U;
@@ -36,7 +36,7 @@ export function ProfileView({ profile, onEdit }: ProfileViewProps) {
               )}
             </div>
             <div className='flex items-center gap-2 mt-2'>
-              {getStatusBadge(profile.status)}
+              <StatusBadge status={profile.status} />
               <Badge variant='outline' className='flex items-center gap-1'>
                 <Shield className='w-3 h-3' />
                 {profile.role.name}
@@ -118,7 +118,7 @@ export function ProfileView({ profile, onEdit }: ProfileViewProps) {
             {t('account_id')}: #{profile.id}
           </p>
           <p>
-            {t('account_status')}: {getStatusBadge(profile.status)}
+            {t('account_status')}: <StatusBadge status={profile.status} />
           </p>
           {profile.email_verified_at && (
             <p>

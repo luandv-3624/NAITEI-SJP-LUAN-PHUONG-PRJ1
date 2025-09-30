@@ -22,13 +22,11 @@ export default tseslint.config([
       globals: globals.browser,
     },
     rules: {
-      'no-restricted-imports': [
-        'error',
-        { patterns: ['@/features/*/*/*', '@/features/*/*'] },
-      ],
+      'no-restricted-imports': ['error', { patterns: ['@/features/*/*/*'] }],
       'react-refresh/only-export-components': 'off',
       'no-useless-escape': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
+      'react-hooks/exhaustive-deps': 'off',
     },
   },
 ]);

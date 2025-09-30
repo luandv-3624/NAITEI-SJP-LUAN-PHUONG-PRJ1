@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { vi, describe, it, expect, Mocked } from 'vitest';
-import { useGetSpaceTypes } from '@/features/space/api/use-get-space-types';
+import { useGetSpaceTypes } from '@/features/space';
 
 vi.mock('@/api/axios', () => {
   return {

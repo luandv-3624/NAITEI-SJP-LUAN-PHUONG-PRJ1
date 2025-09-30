@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { SpaceCard } from '@/features/space/components/space-card';
+import { SpaceCard } from '@/features/space/components';
 import { SpaceStatus, Space } from '@/features/space/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 

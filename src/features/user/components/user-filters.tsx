@@ -58,7 +58,6 @@ export function UserFilters() {
   useEffect(() => {
     handleChangeSortBy(searchParams.get('sortBy') || UserSortBy.NAME);
     handleChangeSortOrder(searchParams.get('sortOrder') || UserSortOrder.ASC);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

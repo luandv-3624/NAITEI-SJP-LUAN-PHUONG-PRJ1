@@ -15,4 +15,8 @@ export type Space = {
   space_type: SpaceType;
   price_type: PriceType;
   amenities: Amenity[];
+  type: {
+    id: number;
+    name: string;
+  };
 };

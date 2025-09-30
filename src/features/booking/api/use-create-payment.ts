@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { createPayment } from '@/api/payment';
 import { toast } from 'sonner';
 import i18n from '@/i18n';
+import { AxiosError } from '@/types';
 
 export function useCreatePayment() {
   const mutation = useMutation({
@@ -12,7 +13,7 @@ export function useCreatePayment() {
           i18n.t('payment.create_payment_success', { ns: 'booking' }),
       );
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError) => {
       const message =
         error?.response?.data?.message ||
         i18n.t('payment.create_payment_failed', { ns: 'booking' });
