@@ -5,3 +5,4 @@ export { type PriceType } from './price-type';
 export { type SpaceType } from './space-type';
 export { type CreateSpaceDto } from './create-space-dto';
 export { type UpdateSpaceDto } from './update-space-dto';
+export { SpaceStatus } from './space-status';
