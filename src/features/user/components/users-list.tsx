@@ -2,7 +2,7 @@ import { BreadcrumbIndies } from '@/components/ui/breadcrumb-indies';
 import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SpinLoading } from '@/components/spin-loading';
-import { AxiosError } from '@/types';
+import { AxiosError, User as UserType } from '@/types';
 import { NotFound } from '@/components/not-found';
 import { GeneralError } from '@/components/general-error';
 import { HTTP_STATUS_CODE } from '@/constants';
@@ -67,6 +67,10 @@ export function UsersList() {
       return prev;
     });
   };
+
+  const notHavePermissionUpdateStatus = (user: UserType) =>
+    user.role.id === Role.ADMIN ||
+    (manager?.role.id === Role.MODERATOR && user.role.id === Role.MODERATOR);
 
   if (isPending) {
     return (
@@ -138,6 +142,7 @@ export function UsersList() {
                             status: value as UserStatus,
                           });
                         }}
+                        disabled={notHavePermissionUpdateStatus(user)}
                       >
                         <SelectTrigger className='w-full'>
                           <SelectValue />
@@ -193,6 +198,7 @@ export function UsersList() {
                         <Button
                           variant='outline'
                           size='sm'
+                          disabled={notHavePermissionUpdateStatus(user)}
                           onClick={() => {
                             updateUserStatus.mutate({
                               userId: user.id,

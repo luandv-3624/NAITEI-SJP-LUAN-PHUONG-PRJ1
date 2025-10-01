@@ -7,11 +7,13 @@ export function MultiUsersSelect({
   onChange,
   value,
   disabled,
+  modalPopover,
 }: {
   excludeUserIds?: number[];
   onChange: (userIds: string[]) => void;
   value?: string[];
   disabled?: boolean;
+  modalPopover?: boolean;
 }) {
   const { data, isPending, isError } = useGetUsersSimpleList();
 
@@ -36,6 +38,7 @@ export function MultiUsersSelect({
       onValueChange={onChange}
       defaultValue={value}
       disabled={isPending || isError || disabled}
+      modalPopover={modalPopover}
     />
   );
 }
