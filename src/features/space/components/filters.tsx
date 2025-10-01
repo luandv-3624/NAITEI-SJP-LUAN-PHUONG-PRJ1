@@ -76,7 +76,7 @@ export function Filters() {
 
   return (
     <section className='space-y-8'>
-      <section className='grid grid-cols-4 gap-8'>
+      <section className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8'>
         <div className='space-y-2'>
           <Label>{t('province')}</Label>
           <ProvinceSelect
@@ -114,7 +114,7 @@ export function Filters() {
           />
         </div>
       </section>
-      <div className='flex gap-8'>
+      <div className='flex gap-8 flex-col lg:flex-row'>
         <section className='space-y-8 min-w-50'>
           <div className='space-y-2'>
             <Label>{t('price_type')}</Label>

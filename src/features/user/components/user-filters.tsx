@@ -61,8 +61,8 @@ export function UserFilters() {
   }, []);
 
   return (
-    <section className='grid grid-cols-3 gap-4'>
-      <div className='space-y-2'>
+    <section className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
+      <div className='space-y-2 lg:col-span-2 xl:col-span-1'>
         <Label className='text-muted-foreground'>{t('search')}</Label>
         <div className='relative'>
           <Search className='absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground size-4' />
