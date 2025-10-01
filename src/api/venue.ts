@@ -60,7 +60,7 @@ export async function updateVenue({
 }
 
 export async function getVenuesOM(
-  params: VenueFilterParams,
+  params: Partial<VenueFilterParams>,
 ): Promise<VenueListResponse> {
   const { data } = await axios.get(`${VENUE_ENDPOINT}/me`, { params });
 

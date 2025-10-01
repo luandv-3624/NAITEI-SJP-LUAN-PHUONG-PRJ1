@@ -12,7 +12,9 @@ export function getQueryKey(
   return params ? [QUERY_KEY, params] : [QUERY_KEY];
 }
 
-export function useGetBookingListOM(params: any) {
+export function useGetBookingListOM(
+  params: BookingFilterParams & { venueId?: string },
+) {
   const isLogin = useAtomValue(isLoginAtom);
 
   return useQuery({
