@@ -3,9 +3,10 @@ import { tokenService } from './token-service';
 import { store } from '@/atoms';
 import { isLoginAtom } from '@/features/auth';
 import i18n from '@/i18n';
+import { API_BASE_URL } from '@/config/api';
 
 export const axios = Axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
 });
 
 axios.interceptors.request.use((config) => {
