@@ -56,7 +56,7 @@ describe('SpaceCard', () => {
   it('should renders space name and address', () => {
     expect(screen.getByText(/Main Hall A/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/123 Main Street Check CI, District 1/i),
+      screen.getByText(/123 Main Street, District 1/i),
     ).toBeInTheDocument();
   });
 
