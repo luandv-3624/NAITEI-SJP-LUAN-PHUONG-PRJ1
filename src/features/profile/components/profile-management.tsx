@@ -4,7 +4,7 @@ import { ProfileView } from './profile-view';
 import { ProfileEdit } from './profile-edit';
 import { useUpdateProfile } from '@/features/profile';
 import { useTranslation } from 'react-i18next';
-import { UpdateProfileRequest, User } from '../types/user';
+import { UpdateProfileRequest, User } from '../types';
 
 interface ProfileManagementProps {
   profile: User;

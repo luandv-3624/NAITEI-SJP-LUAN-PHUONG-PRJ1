@@ -1,14 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { SpaceCard } from '@/features/space/components';
-import { SpaceStatus, Space } from '@/features/space/types';
+import { SpaceStatus } from '@/features/space/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('react-icons/fa6', () => ({
   FaPeopleGroup: () => <span data-testid='fa-people-group' />,
 }));
 
-const mockSpace: Space = {
+// Space type is tooooo big, use any type so we only need to fill neccessary fields
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mockSpace: any = {
   id: 1,
   name: 'Main Hall A',
   venue_id: 10,
