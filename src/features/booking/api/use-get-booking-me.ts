@@ -4,13 +4,16 @@ import { useAtomValue } from 'jotai';
 import { isLoginAtom } from '@/features/auth';
 import { BookingFilterParams } from '../types';
 
-const QUERY_KEY = 'bookings';
+const QUERY_KEY = 'bookings-me';
+export function getQueryKey(filter?: BookingFilterParams) {
+  return filter ? [QUERY_KEY, filter] : [QUERY_KEY];
+}
 
 export function useGetBookingMe(params: BookingFilterParams) {
   const isLogin = useAtomValue(isLoginAtom);
 
   return useQuery({
-    queryKey: [QUERY_KEY, params],
+    queryKey: getQueryKey(params),
     queryFn: () => getBookingMe(params),
     enabled: isLogin,
     placeholderData: keepPreviousData,

@@ -34,7 +34,7 @@ export function Sidebar({ menuLayout }: { menuLayout: MenuLayout }) {
           variant='link'
           asChild
         >
-          <Link to='/admin/dashboard' className='flex items-center gap-2'>
+          <Link to='/' className='flex items-center gap-2'>
             <BookOpenIcon className='size-6 mr-1' />
             <h1
               className={cn(
