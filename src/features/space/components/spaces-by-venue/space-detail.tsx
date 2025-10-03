@@ -60,11 +60,12 @@ export function SpaceDetail({ spaceId }: { spaceId: string }) {
         src='/auth-wall.jpg'
         className='h-80 w-full bg-accent rounded-2xl object-cover object-center'
       />
-      <div className='grid grid-cols-2 gap-4 h-40 text-sm'>
-        <div className='space-y-2 p-4'>
-          <div className='flex items-center gap-4'>
-            <h1 className='text-4xl font-bold'>{data.name}</h1>
-            <SpaceStatusBadge status={data.status} />
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm'>
+        <div className='space-y-2 p-4 min-h-40'>
+          <div>
+            <h1 className='text-4xl font-bold'>
+              {data.name} <SpaceStatusBadge status={data.status} />
+            </h1>
           </div>
           <div className='flex items-center gap-4'>
             <div className='flex items-center gap-2'>
@@ -82,7 +83,7 @@ export function SpaceDetail({ spaceId }: { spaceId: string }) {
             {formatDateTime(data.updated_at)}
           </p>
         </div>
-        <div className='rounded-lg bg-blue-400/20 flex flex-col items-center justify-center'>
+        <div className='rounded-lg bg-blue-400/20 flex flex-col items-center justify-center min-h-40'>
           <span className='text-blue-500 text-3xl font-bold'>
             {formatPrice(String(data.price))}
           </span>
@@ -102,8 +103,8 @@ export function SpaceDetail({ spaceId }: { spaceId: string }) {
           <p className='text-sm'>{data.description}</p>
         </CardContent>
       </Card>
-      <div className='flex justify-end'>
-        <Button variant='outline' asChild className=''>
+      <div className='lg:flex lg:justify-end'>
+        <Button variant='outline' asChild className='w-full lg:w-auto'>
           <Link
             to={`/dashboard/om/venues/${data.venue.id}/spaces/${data.id}/edit`}
           >

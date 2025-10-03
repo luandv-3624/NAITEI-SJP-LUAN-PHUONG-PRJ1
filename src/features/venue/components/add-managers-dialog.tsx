@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/dialog';
 import { IoMdPersonAdd } from 'react-icons/io';
 import { useState } from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export function AddManagersDialog({
   venueId,
@@ -68,48 +69,51 @@ export function AddManagersDialog({
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className='grid gap-4'>
-            <DialogHeader>
-              <DialogTitle>{t('add_managers')}</DialogTitle>
-              <DialogDescription>
-                {t('add_managers_description')}
-              </DialogDescription>
-            </DialogHeader>
-            <FormField
-              control={form.control}
-              name='userIds'
-              render={({ field }) => (
-                <FormItem className='grid gap-2'>
-                  <FormLabel>{t('managers')}</FormLabel>
-                  <FormControl>
-                    <MultiUsersSelect
-                      onChange={(userIds) => {
-                        field.onChange(userIds.map((id) => Number(id)));
-                      }}
-                      value={field.value.map((id) => String(id))}
-                      disabled={isLoading}
-                      excludeUserIds={excludeUserIds}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <DialogFooter>
-              <DialogClose
-                asChild
-                disabled={isLoading}
-                onClick={() => setOpen(false)}
-              >
-                <Button variant='outline'>{t('cancel')}</Button>
-              </DialogClose>
-              <Button type='submit' disabled={isLoading}>
-                {t('add_managers')}
-              </Button>
-            </DialogFooter>
-          </form>
-        </Form>
+        <ScrollArea className='max-h-[calc(100vh-48px)]'>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='grid gap-4'>
+              <DialogHeader>
+                <DialogTitle>{t('add_managers')}</DialogTitle>
+                <DialogDescription>
+                  {t('add_managers_description')}
+                </DialogDescription>
+              </DialogHeader>
+              <FormField
+                control={form.control}
+                name='userIds'
+                render={({ field }) => (
+                  <FormItem className='grid gap-2'>
+                    <FormLabel>{t('managers')}</FormLabel>
+                    <FormControl>
+                      <MultiUsersSelect
+                        onChange={(userIds) => {
+                          field.onChange(userIds.map((id) => Number(id)));
+                        }}
+                        value={field.value.map((id) => String(id))}
+                        disabled={isLoading}
+                        excludeUserIds={excludeUserIds}
+                        modalPopover
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <DialogFooter>
+                <DialogClose
+                  asChild
+                  disabled={isLoading}
+                  onClick={() => setOpen(false)}
+                >
+                  <Button variant='outline'>{t('cancel')}</Button>
+                </DialogClose>
+                <Button type='submit' disabled={isLoading}>
+                  {t('add_managers')}
+                </Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );

@@ -133,7 +133,13 @@ export function List({ venueId }: { venueId: string }) {
                 {spaces.data.map((space) => (
                   <TableRow key={space.id}>
                     <TableCell className='font-bold'>#{space.id}</TableCell>
-                    <TableCell>{space.name}</TableCell>
+                    <TableCell className='relative'>
+                      <div className='absolute inset-0 flex items-center'>
+                        <p className='truncate' title={space.name}>
+                          {space.name}
+                        </p>
+                      </div>
+                    </TableCell>
                     <TableCell>
                       <SpaceTypeBadge spaceType={space.space_type} />
                     </TableCell>

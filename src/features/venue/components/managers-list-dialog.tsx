@@ -11,6 +11,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { User } from '@/types';
 import { Binoculars } from 'lucide-react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function ManagersListDialog({ managers }: { managers: User[] }) {
@@ -26,11 +27,11 @@ export default function ManagersListDialog({ managers }: { managers: User[] }) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{t('managers_list')}</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className='line-clamp-1'>
             {t('managers_list_description')}
           </DialogDescription>
         </DialogHeader>
-        <ScrollArea className='max-h-100 mt-4'>
+        <ScrollArea className='max-h-[calc(100vh-110px)]'>
           <div className='flex flex-col gap-4 p-2'>
             {managers.length === 0 && (
               <span className='text-sm text-muted-foreground'>
@@ -38,8 +39,8 @@ export default function ManagersListDialog({ managers }: { managers: User[] }) {
               </span>
             )}
             {managers.map((manager, index) => (
-              <>
-                <div key={manager.id} className='flex items-center gap-4'>
+              <React.Fragment key={manager.id}>
+                <div className='flex items-center gap-4'>
                   <img src='/auth-wall.jpg' className='size-10 rounded-full' />
                   <div className='text-sm flex flex-col'>
                     <span className='font-bold'>{manager.name}</span>
@@ -49,7 +50,7 @@ export default function ManagersListDialog({ managers }: { managers: User[] }) {
                   </div>
                 </div>
                 {index < managers.length - 1 && <Separator />}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </ScrollArea>
