@@ -1,3 +1,4 @@
+import { AxiosError } from '@/types';
 import { axios, REFRESH_ENDPOINT } from './axios';
 
 class TokenService {
@@ -15,10 +16,11 @@ class TokenService {
     this.accessToken = null;
   }
 
-  async initiateSilentRefresh() {
+  async initiateSilentRefresh({ onNoToken }: { onNoToken?: () => void }) {
     const refreshToken = localStorage.getItem('refreshToken');
 
     if (!refreshToken) {
+      if (onNoToken) onNoToken();
       return false;
     }
 
@@ -32,9 +34,15 @@ class TokenService {
       this.setAccessToken(access_token);
       return true;
     } catch (error) {
-      console.error('Silent refresh failed:', error);
-      localStorage.removeItem('refreshToken');
-      this.clearTokens();
+      if ((error as AxiosError).message === 'Network Error') {
+        console.error(
+          'No internet connection. Silent refresh cannot be completed at the moment.',
+        );
+      } else {
+        console.error('Silent refresh failed:', error);
+        localStorage.removeItem('refreshToken');
+        this.clearTokens();
+      }
     }
 
     return false;

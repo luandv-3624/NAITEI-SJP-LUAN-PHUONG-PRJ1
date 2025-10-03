@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
-import { useCreatePayment, getQueryKey } from '@/features/booking';
+import { useCreatePayment, getBookingQuery } from '@/features/booking';
 import { paymentFormSchema } from '@/features/booking';
 import { queryClient } from '@/api/query-client';
 import { echo } from '@/lib/echo';
@@ -75,7 +75,7 @@ export function usePayment(
       if (data.status === 'success') {
         toast.success(t('payment.success'));
         queryClient.invalidateQueries({
-          queryKey: getQueryKey(String(booking.id)),
+          queryKey: getBookingQuery(String(booking.id)),
         });
       } else {
         toast.error(t('payment.failed_or_canceled'));
