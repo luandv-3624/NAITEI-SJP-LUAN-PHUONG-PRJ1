@@ -3,6 +3,7 @@ import { updateStatus } from '@/api/booking';
 import { toast } from 'sonner';
 import { getQueryKey } from './use-get-booking-list';
 import { queryClient } from '@/api/query-client';
+import { AxiosError } from '@/types';
 
 export function useUpdateStatus() {
   const mutation = useMutation({
@@ -11,7 +12,7 @@ export function useUpdateStatus() {
       toast.success(response.message);
       queryClient.invalidateQueries({ queryKey: getQueryKey() });
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError) => {
       toast.error(error?.response?.data?.message);
     },
   });

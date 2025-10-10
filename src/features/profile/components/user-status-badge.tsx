@@ -3,7 +3,7 @@ import { CheckCircle, XCircle, ShieldCheck, HelpCircle } from 'lucide-react';
 import { USER_STATUS, UserStatus } from '@/constants';
 import { useTranslation } from 'react-i18next';
 
-export function getStatusBadge(status: UserStatus) {
+export function StatusBadge({ status }: { status: UserStatus }) {
   const { t } = useTranslation('profile');
 
   switch (status) {

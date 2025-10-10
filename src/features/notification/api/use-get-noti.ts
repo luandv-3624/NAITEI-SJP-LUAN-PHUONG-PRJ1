@@ -9,6 +9,7 @@ export function getQueryKey(params?: { pageParam: number; pageSize: number }) {
 
 export function useInfiniteNoti(pageSize = 10) {
   return useInfiniteQuery({
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
     queryKey: getQueryKey(),
     queryFn: ({ pageParam = 1 }) =>
       getNotificationByMe({ pageParam, pageSize }),

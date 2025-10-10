@@ -9,7 +9,11 @@ export function useSilentRefresh() {
 
   useEffect(() => {
     (async () => {
-      const isSuccess = await tokenService.initiateSilentRefresh();
+      const isSuccess = await tokenService.initiateSilentRefresh({
+        onNoToken: () => {
+          setIsLogin(false);
+        },
+      });
 
       if (isSuccess) {
         setIsLogin(true);

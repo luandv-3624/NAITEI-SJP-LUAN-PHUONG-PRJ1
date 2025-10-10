@@ -6,13 +6,15 @@ import {
 } from '@/components/ui/navigation-menu';
 import { UserMenu } from '@/components/ui/user-menu';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/features/theme/components/theme-toggle';
-import { LangSelector } from '@/features/locale/components/lang-selector';
+import { ThemeToggle } from '@/features/theme';
+import { LangSelector } from '@/features/locale';
 import { useTranslation } from 'react-i18next';
 import { isLoginAtom } from '@/features/auth';
 import { useGetProfile } from '@/features/auth';
 import { useAtomValue } from 'jotai';
 import { Notification } from '@/features/notification';
+import { SheetMenu } from '@/components/ui/sheet-menu';
+import { cn } from '@/lib/utils';
 
 export function Header() {
   const isLoggedIn = useAtomValue(isLoginAtom);
@@ -27,9 +29,9 @@ export function Header() {
   ];
 
   return (
-    <header className='sticky top-0 z-50 w-full shadow-md px-8 py-4 flex items-center justify-between bg-background'>
+    <header className='lg:sticky top-0 z-50 w-full shadow-md px-8 py-4 flex items-center justify-between bg-background'>
       <div className='flex items-center gap-8'>
-        <NavLink to='/' className='flex items-center gap-2'>
+        <NavLink to='/' className='flex items-center gap-2 hidden lg:flex'>
           <img
             src='/logo.png'
             alt='Logo'
@@ -40,18 +42,23 @@ export function Header() {
           </span>
         </NavLink>
 
-        <NavigationMenu>
+        <div className='lg:hidden'>
+          <SheetMenu items={menuItems} logo='/logo.png' logoText={t('logo')} />
+        </div>
+
+        <NavigationMenu className='hidden lg:block'>
           <NavigationMenuList className='flex gap-6'>
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.to}>
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
-                    `pb-2 transition-all border-b-2 ${
-                      isActive
-                        ? 'border-yellow-400 text-indigo-600 font-semibold'
-                        : 'border-transparent text-gray-700 hover:border-yellow-300 hover:text-indigo-600'
-                    }`
+                    cn('pb-2 transition-all border-b-2', {
+                      'border-yellow-400 text-indigo-600 font-semibold':
+                        isActive,
+                      'border-transparent text-gray-700 hover:border-yellow-300 hover:text-indigo-600':
+                        !isActive,
+                    })
                   }
                 >
                   {item.label}

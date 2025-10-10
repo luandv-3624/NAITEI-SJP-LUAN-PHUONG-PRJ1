@@ -64,7 +64,10 @@ export function SpaceList() {
 
   return (
     <section className='space-y-4'>
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4' ref={containerRef}>
+      <div
+        className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4'
+        ref={containerRef}
+      >
         {data.data.map((space) => (
           <SpaceCard key={space.id} space={space} />
         ))}

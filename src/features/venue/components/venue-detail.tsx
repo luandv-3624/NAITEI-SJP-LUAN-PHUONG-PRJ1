@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/carousel';
 import { useTranslation } from 'react-i18next';
 
+const sections = ['overview', 'spaces', 'location'];
+
 export function VenueDetail({ venue }: { venue: Venue }) {
   const { t } = useTranslation('venue');
 
@@ -21,8 +23,6 @@ export function VenueDetail({ venue }: { venue: Venue }) {
   const ward = venue.ward?.name || '';
   const [activeTab, setActiveTab] = useState('overview');
   const tabRef = useRef<HTMLDivElement | null>(null);
-
-  const sections = ['overview', 'spaces', 'location'];
 
   const handleTabChange = (value: string) => {
     const el = document.getElementById(`${value}-section`);
